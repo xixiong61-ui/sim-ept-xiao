@@ -4,88 +4,1819 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>小T · SIM EPT 专属学习网站</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f6f7fb;color:#202124;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-header{background:linear-gradient(135deg,#6957f5,#907cf6);color:#fff;padding:28px 16px 20px}
-.wrap{max-width:980px;margin:auto}h1{margin:0;font-size:30px}header p{opacity:.9}
-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}nav button{border:0;border-radius:12px;padding:12px 7px;font-weight:700;background:#fff;color:#333}nav button.active{background:#202124;color:#fff}
-main{padding:18px 14px}.section{display:none}.section.active{display:block}
-.hero,.card,.detail{background:#fff;border-radius:16px;padding:18px;margin-bottom:13px;box-shadow:0 2px 10px #0000000b}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}.card h3{margin:7px 0}.card p{color:#667085;line-height:1.65}
-button.action, .card button{border:0;border-radius:10px;padding:10px 13px;background:#eeeaff;color:#5144c7;font-weight:700}
-.tag{display:inline-block;padding:4px 9px;border-radius:999px;background:#eeeaff;color:#5144c7;font-size:12px}
-.detail{display:none}.detail.show{display:block}.box{background:#f7f7ff;border-left:4px solid #6d5dfc;padding:12px;border-radius:8px;line-height:1.7;margin:10px 0}
-.question{border:1px solid #e5e7eb;border-radius:12px;padding:13px;margin:12px 0}.choice{background:#f8fafc;padding:8px;border-radius:7px;margin:5px 0}
-.answer{display:none;background:#ecfdf3;color:#166534;padding:10px;border-radius:8px;margin-top:8px;line-height:1.6}.answer.show{display:block}
-.article{line-height:1.85;background:#fafafa;padding:14px;border-radius:10px}
-footer{text-align:center;padding:30px;color:#9ca3af}@media(max-width:600px){nav{grid-template-columns:repeat(2,1fr)}h1{font-size:25px}}
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:#f6f7fb;
+  color:#202124;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
+  "PingFang SC","Microsoft YaHei",sans-serif;
+}
+
+header{
+  background:linear-gradient(135deg,#6957f5,#907cf6);
+  color:#fff;
+  padding:28px 16px 20px;
+}
+
+.wrap{
+  max-width:980px;
+  margin:auto;
+}
+
+h1{
+  margin:0;
+  font-size:30px;
+}
+
+header p{
+  opacity:.9;
+}
+
+nav{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:18px;
+}
+
+nav button{
+  border:0;
+  border-radius:12px;
+  padding:12px 7px;
+  font-weight:700;
+  background:#fff;
+  color:#333;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+nav button.active{
+  background:#202124;
+  color:#fff;
+}
+
+main{
+  padding:18px 14px;
+}
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+.hero,
+.card,
+.detail{
+  background:#fff;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:13px;
+  box-shadow:0 2px 10px #0000000b;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+  gap:12px;
+}
+
+.card{
+  cursor:pointer;
+  transition:transform .12s,box-shadow .12s;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.card:active{
+  transform:scale(.985);
+}
+
+.card h3{
+  margin:7px 0;
+}
+
+.card p{
+  color:#667085;
+  line-height:1.65;
+}
+
+button.action,
+.card button{
+  border:0;
+  border-radius:10px;
+  padding:10px 13px;
+  background:#eeeaff;
+  color:#5144c7;
+  font-weight:700;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.tag{
+  display:inline-block;
+  padding:4px 9px;
+  border-radius:999px;
+  background:#eeeaff;
+  color:#5144c7;
+  font-size:12px;
+}
+
+.detail{
+  display:none;
+}
+
+.detail.show{
+  display:block;
+}
+
+.box{
+  background:#f7f7ff;
+  border-left:4px solid #6d5dfc;
+  padding:12px;
+  border-radius:8px;
+  line-height:1.7;
+  margin:10px 0;
+}
+
+.question{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:13px;
+  margin:12px 0;
+}
+
+.choice{
+  background:#f8fafc;
+  padding:8px;
+  border-radius:7px;
+  margin:5px 0;
+}
+
+.answer{
+  display:none;
+  background:#ecfdf3;
+  color:#166534;
+  padding:10px;
+  border-radius:8px;
+  margin-top:8px;
+  line-height:1.6;
+}
+
+.answer.show{
+  display:block;
+}
+
+.article{
+  line-height:1.85;
+  background:#fafafa;
+  padding:14px;
+  border-radius:10px;
+}
+
+.back{
+  margin-top:10px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#9ca3af;
+}
+
+@media(max-width:600px){
+
+  nav{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  h1{
+    font-size:25px;
+  }
+
+}
 </style>
 </head>
+
 <body>
-<header><div class="wrap">
-<h1>小T · SIM EPT 专属学习网站</h1><p>语法 · 阅读 · 听力 · 写作 · 冲刺练习</p>
+
+<header>
+<div class="wrap">
+
+<h1>小T · SIM EPT 专属学习网站</h1>
+
+<p>
+语法 · 阅读 · 听力 · 写作 · 冲刺练习
+</p>
+
 <nav>
-<button class="active" onclick="switchSec('grammar',this)">📚 语法</button>
-<button onclick="switchSec('reading',this)">📖 阅读</button>
-<button onclick="switchSec('listening',this)">🎧 听力</button>
-<button onclick="switchSec('writing',this)">✍️ 写作</button>
-</nav></div></header>
+
+<button
+class="active"
+onclick="switchSec('grammar',this)">
+📚 语法
+</button>
+
+<button
+onclick="switchSec('reading',this)">
+📖 阅读
+</button>
+
+<button
+onclick="switchSec('listening',this)">
+🎧 听力
+</button>
+
+<button
+onclick="switchSec('writing',this)">
+✍️ 写作
+</button>
+
+</nav>
+
+</div>
+</header>
+
 
 <main class="wrap">
+
+
+<!-- ==================== 语法 ==================== -->
+
 <section id="grammar" class="section active">
-<div class="hero"><h2>📚 语法知识点</h2><p>点击任意知识点查看讲解、结构、例句、易错点和练习答案解析。</p></div>
-<div class="grid"><div class="card"><span class="tag">语法</span><h3>一般现在时</h3><p>主语 + 动词原形；第三人称单数通常加 -s/-es</p><button onclick="showGrammar(0)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>一般过去时</h3><p>主语 + 动词过去式；否定用 did not + 动词原形</p><button onclick="showGrammar(1)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>一般将来时</h3><p>will + 动词原形；be going to + 动词原形</p><button onclick="showGrammar(2)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>现在进行时</h3><p>am/is/are + doing</p><button onclick="showGrammar(3)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>过去进行时</h3><p>was/were + doing</p><button onclick="showGrammar(4)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>现在完成时</h3><p>have/has + 过去分词</p><button onclick="showGrammar(5)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>过去完成时</h3><p>had + 过去分词</p><button onclick="showGrammar(6)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>主将从现</h3><p>If/When/Before/After/As soon as + 一般现在时；主句 + will + 原形</p><button onclick="showGrammar(7)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>虚拟条件句</h3><p>现在相反：If + 过去式, would + 原形；过去相反：If + had done, would have done</p><button onclick="showGrammar(8)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>情态动词</h3><p>情态动词 + 动词原形</p><button onclick="showGrammar(9)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>被动语态</h3><p>be + 过去分词</p><button onclick="showGrammar(10)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>主谓一致</h3><p>谓语形式必须与主语的人称和数一致</p><button onclick="showGrammar(11)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>定语从句</h3><p>先行词 + who/which/that + 从句</p><button onclick="showGrammar(12)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>宾语从句</h3><p>主句 + 引导词 + 陈述语序</p><button onclick="showGrammar(13)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>非谓语动词</h3><p>to do / doing / done</p><button onclick="showGrammar(14)">查看详情 →</button></div><div class="card"><span class="tag">语法</span><h3>比较级</h3><p>短形容词 + er / more + 长形容词，常与 than 搭配</p><button onclick="showGrammar(15)">查看详情 →</button></div></div><div id="grammarDetail" class="detail"></div>
+
+<div class="hero">
+
+<h2>📚 语法知识点</h2>
+
+<p>
+点击任意知识点查看讲解、结构、例句、标志词和练习解析。
+</p>
+
+</div>
+
+<div id="grammarGrid" class="grid"></div>
+
+<div id="grammarDetail" class="detail"></div>
+
 </section>
+
+
+<!-- ==================== 阅读 ==================== -->
 
 <section id="reading" class="section">
-<div class="hero"><h2>📖 SIM EPT 阅读练习</h2><p><b>10篇 × 每篇5题 = 50题</b>。每篇都有答案和解析。</p></div>
-<div class="grid"><div class="card"><span class="tag">5题</span><h3>1. University Library</h3><p>University libraries are no longer places where students only borrow books. Many libraries now provide qu...</p><button onclick="showReading(0)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>2. A Part-time Job</h3><p>Many university students choose to take part-time jobs. A job can help students earn money and develop us...</p><button onclick="showReading(1)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>3. Online Learning</h3><p>Online learning has become an important part of education. It allows students to watch lectures, read mat...</p><button onclick="showReading(2)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>4. Public Transport</h3><p>Public transport is widely used in large cities because it can carry many people at the same time. Buses ...</p><button onclick="showReading(3)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>5. Healthy Sleep</h3><p>Sleep plays an important role in students&#x27; physical and mental well-being. Students who do not get enough...</p><button onclick="showReading(4)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>6. Group Projects</h3><p>Group projects are common at universities because they allow students to work together toward a shared go...</p><button onclick="showReading(5)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>7. Saving Money as a Student</h3><p>Students often need to manage limited budgets. One simple way to save money is to plan meals before shopp...</p><button onclick="showReading(6)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>8. Volunteering</h3><p>Volunteering can benefit both communities and students. Students may help at community events, support yo...</p><button onclick="showReading(7)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>9. The Importance of Exercise</h3><p>Regular exercise does not necessarily require expensive equipment or a gym membership. Walking, cycling a...</p><button onclick="showReading(8)">开始练习 →</button></div><div class="card"><span class="tag">5题</span><h3>10. Preparing for an Examination</h3><p>Effective exam preparation usually begins before the final day. Students can divide a large amount of mat...</p><button onclick="showReading(9)">开始练习 →</button></div></div><div id="readingDetail" class="detail"></div>
+
+<div class="hero">
+
+<h2>📖 SIM EPT 阅读练习</h2>
+
+<p>
+<b>10篇 × 每篇5题 = 50题</b>
+</p>
+
+</div>
+
+<div id="readingGrid" class="grid"></div>
+
+<div id="readingDetail" class="detail"></div>
+
 </section>
+
+
+<!-- ==================== 听力 ==================== -->
 
 <section id="listening" class="section">
-<div class="hero"><h2>🎧 听力</h2><p>重点：关键词、数字、转折、因果、态度和校园生活场景。</p></div>
-<div class="grid"><div class="card"><h3>校园场景</h3><p>课程、作业、考试、图书馆、注册。</p></div><div class="card"><h3>生活场景</h3><p>交通、住宿、购物、预约和服务咨询。</p></div><div class="card"><h3>做题技巧</h3><p>先看选项，抓关键词，特别注意 however、but、because、数字和时间。</p></div></div>
+
+<div class="hero">
+
+<h2>🎧 听力</h2>
+
+<p>
+重点：关键词、数字、转折、因果、态度和校园生活场景。
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>校园场景</h3>
+
+<p>
+课程、作业、考试、图书馆、注册。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>生活场景</h3>
+
+<p>
+交通、住宿、购物、预约和服务咨询。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>做题技巧</h3>
+
+<p>
+先看选项，抓关键词，特别注意
+however、but、because、数字和时间。
+</p>
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- ==================== 写作 ==================== -->
 
 <section id="writing" class="section">
-<div class="hero"><h2>✍️ 写作</h2><p>从句型、段落结构到限时写作。</p></div>
-<div class="grid"><div class="card"><h3>开头</h3><p>Nowadays, ... / It is widely believed that ...</p></div><div class="card"><h3>论证</h3><p>One important reason is that ...</p></div><div class="card"><h3>举例</h3><p>For example, ... / For instance, ...</p></div><div class="card"><h3>结尾</h3><p>In conclusion, ... / To sum up, ...</p></div></div>
+
+<div class="hero">
+
+<h2>✍️ 写作</h2>
+
+<p>
+从句型、段落结构到限时写作。
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>开头</h3>
+
+<p>
+Nowadays, ...<br>
+It is widely believed that ...
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>论证</h3>
+
+<p>
+One important reason is that ...
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>举例</h3>
+
+<p>
+For example, ...<br>
+For instance, ...
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>结尾</h3>
+
+<p>
+In conclusion, ...<br>
+To sum up, ...
+</p>
+
+</div>
+
+</div>
+
 </section>
+
+
 </main>
-<footer>小T · SIM EPT 冲刺学习站</footer>
+
+
+<footer>
+小T · SIM EPT 冲刺学习站
+</footer>
+
 
 <script>
-const G=[('一般现在时', '主语 + 动词原形；第三人称单数通常加 -s/-es', 'usually, often, always, every day', 'She usually studies English after dinner.', 'He ___ English every day.', ['study', 'studies', 'studied', 'studying'], 'B', 'every day 表示习惯性动作，He 是第三人称单数，所以用 studies。'), ('一般过去时', '主语 + 动词过去式；否定用 did not + 动词原形', 'yesterday, last week, ago', 'I visited Singapore last year.', 'I ___ him yesterday.', ['see', 'saw', 'seen', 'seeing'], 'B', 'yesterday 是明确的过去时间，使用一般过去时 saw。'), ('一般将来时', 'will + 动词原形；be going to + 动词原形', 'tomorrow, next week, soon', 'I will finish the report tomorrow.', 'She ___ call you tomorrow.', ['will', 'did', 'has', 'was'], 'A', 'tomorrow 表示将来，will 后接动词原形。'), ('现在进行时', 'am/is/are + doing', 'now, right now, at the moment', 'They are studying now.', 'Look! The children ___.', ['play', 'played', 'are playing', 'have played'], 'C', 'Look 表明动作正在发生，用现在进行时。'), ('过去进行时', 'was/were + doing', 'while, when, at 8 p.m. yesterday', 'I was reading when he called.', 'At 9 last night, I ___ TV.', ['watch', 'watched', 'was watching', 'have watched'], 'C', '过去某一具体时刻正在进行，用过去进行时。'), ('现在完成时', 'have/has + 过去分词', 'already, yet, ever, never, just, since, for', 'She has lived here for three years.', 'He ___ never ___ to London.', ['has / been', 'did / go', 'is / going', 'was / go'], 'A', 'never 常与现在完成时搭配；He 用 has，been 是过去分词。'), ('过去完成时', 'had + 过去分词', 'before, after, by the time, already', 'The train had left before we arrived.', 'By the time I arrived, she ___ already ___.', ['has / left', 'had / left', 'was / leaving', 'will / leave'], 'B', 'arrived 是过去时间点，leave 在此之前已完成。'), ('主将从现', 'If/When/Before/After/As soon as + 一般现在时；主句 + will + 原形', 'if, when, before, after, as soon as, unless', 'If it rains tomorrow, I will stay home.', 'If it ___ tomorrow, we will stay home.', ['will rain', 'rains', 'rained', 'is raining'], 'B', 'if 引导条件从句，即使表示将来，也通常用一般现在时。'), ('虚拟条件句', '现在相反：If + 过去式, would + 原形；过去相反：If + had done, would have done', 'if, were, had done, would have done', 'If I were you, I would study harder.', 'If I ___ more time, I would learn another language.', ['have', 'had', 'will have', 'have had'], 'B', 'would + 原形表示与现在事实相反，if 从句用过去式 had。'), ('情态动词', '情态动词 + 动词原形', 'can, could, may, might, must, should, would', 'You should get more rest.', 'You ___ finish the work today.', ['must', 'must to', 'musts', 'are must'], 'A', '情态动词后直接接动词原形。'), ('被动语态', 'be + 过去分词', 'by + 执行者（可省略）', 'The report was written by John.', 'English ___ in many countries.', ['speaks', 'is spoken', 'spoken', 'is speaking'], 'B', 'English 是动作承受者，一般现在时被动为 is spoken。'), ('主谓一致', '谓语形式必须与主语的人称和数一致', 'each, every, everyone, neither, either', 'Everyone likes music.', 'Everyone ___ responsible for the result.', ['are', 'is', 'be', 'were'], 'B', 'everyone 语法上视为单数。'), ('定语从句', '先行词 + who/which/that + 从句', 'who, which, that, whose, where', 'The book that you gave me is useful.', 'The student ___ won the prize is my friend.', ['which', 'who', 'where', 'what'], 'B', 'student 指人，所以用 who。'), ('宾语从句', '主句 + 引导词 + 陈述语序', 'that, whether, if, what, why, how', 'I know where he lives.', "I don't know ___ she is coming.", ['is', 'whether', 'does', 'did'], 'B', '宾语从句使用陈述语序，whether 表示“是否”。'), ('非谓语动词', 'to do / doing / done', 'want to do, enjoy doing, interested in doing', 'I enjoy reading English articles.', 'She enjoys ___ books.', ['read', 'to read', 'reading', 'reads'], 'C', 'enjoy 后接动名词 doing。'), ('比较级', '短形容词 + er / more + 长形容词，常与 than 搭配', 'than, much, far, even', 'This book is more useful than that one.', 'This question is ___ than the last one.', ['easy', 'easier', 'more easy', 'easiest'], 'B', 'easy 的比较级为 easier。')];
-const R=[('1. University Library', 'University libraries are no longer places where students only borrow books. Many libraries now provide quiet study areas, group discussion rooms, computers and online databases. Some even offer workshops on academic writing and research skills. However, students still need to use the facilities responsibly. Keeping noise low, returning books on time and respecting other students are simple but important rules.', [('What is the main idea of the passage?', ['Libraries are becoming smaller.', 'Modern university libraries offer many kinds of services.', 'Students should stop borrowing books.', 'Libraries are only useful for research.'], 'B', 'The passage explains that university libraries now provide many services beyond borrowing books.'), ('Which service is mentioned in the passage?', ['Driving lessons', 'Cooking classes', 'Academic writing workshops', 'Sports training'], 'C', 'Academic writing and research workshops are specifically mentioned.'), ('What should students do in a library?', ['Make loud phone calls', 'Return books on time', 'Eat everywhere', 'Ignore other students'], 'B', 'Returning books on time is listed as a responsible behavior.'), ('Why are libraries still important?', ['They provide study and research resources.', 'They sell textbooks.', 'They replace classrooms.', 'They are always open.'], 'A', 'The passage highlights study areas, computers, databases and research support.'), ("What does 'responsibly' most nearly mean?", ['Carelessly', 'Properly', 'Quickly', 'Secretly'], 'B', 'Here, responsibly means behaving properly and respectfully.')]), ('2. A Part-time Job', "Many university students choose to take part-time jobs. A job can help students earn money and develop useful skills. For example, working in a café may improve communication and customer-service skills. However, students need to manage their time carefully. If work takes too much time, students may have less time for classes, assignments and rest. Therefore, a part-time job is most helpful when it fits a student's study schedule.", [('Why do students take part-time jobs?', ['Only for entertainment', 'To earn money and develop skills', 'To avoid classes', 'To travel abroad'], 'B', 'The passage gives two main benefits: earning money and developing useful skills.'), ('What skill may working in a café improve?', ['Driving', 'Programming', 'Customer service', 'Swimming'], 'C', 'Customer-service skills are directly mentioned.'), ('What problem can too much work cause?', ['More free time', 'Less time for study and rest', 'Better grades automatically', 'More holidays'], 'B', 'Too much work can reduce time available for classes, assignments and rest.'), ("What is the writer's advice?", ['Students should never work.', 'Students should work full-time.', 'A job should fit the study schedule.', 'Students should leave university.'], 'C', 'The final sentence says a part-time job is most helpful when it fits the study schedule.'), ("What does 'manage' mean in 'manage their time'?", ['Control and organize', 'Forget', 'Spend carelessly', 'Reduce'], 'A', 'Manage time means to control and organize it effectively.')]), ('3. Online Learning', 'Online learning has become an important part of education. It allows students to watch lectures, read materials and complete activities from different places. This flexibility is especially useful for students with busy schedules. However, online learning also requires self-discipline. Without a regular study plan, students may postpone their work. Successful online learners usually set clear goals, follow a timetable and communicate with teachers when they need help.', [('What is one advantage of online learning?', ['It requires no study.', 'It offers flexibility.', 'It removes all assignments.', 'It guarantees high grades.'], 'B', 'The passage says students can learn from different places and that this flexibility is useful.'), ('What does online learning require?', ['Self-discipline', 'A driving license', 'A full-time job', 'No planning'], 'A', 'Self-discipline is identified as an important requirement.'), ('What may happen without a study plan?', ['Students may postpone work.', 'Students finish earlier.', 'Students never need teachers.', 'Students get automatic feedback.'], 'A', 'The passage states that students may postpone their work without a regular plan.'), ('What do successful online learners usually do?', ['Avoid teachers', 'Set goals and follow a timetable', 'Study only at night', 'Never communicate'], 'B', 'Clear goals and a timetable are specifically mentioned.'), ('What is the best title?', ['The History of Schools', 'How to Succeed in Online Learning', 'Why Students Dislike Teachers', 'The Cost of Computers'], 'B', 'The passage focuses on the benefits and requirements of successful online learning.')]), ('4. Public Transport', 'Public transport is widely used in large cities because it can carry many people at the same time. Buses and trains may also reduce the number of private cars on the road. This can help reduce traffic congestion and air pollution. However, public transport systems need to be reliable. If buses or trains are frequently late, passengers may choose to use private cars instead. Good public transport therefore requires convenient routes, reasonable prices and dependable service.', [('Why is public transport useful in large cities?', ['It carries many people.', 'It makes cars cheaper.', 'It stops all pollution.', 'It removes roads.'], 'A', 'The passage begins by explaining that public transport can carry many people.'), ('What can fewer private cars help reduce?', ['Traffic congestion and air pollution', 'University fees', 'Rainfall', 'Homework'], 'A', 'Both traffic congestion and air pollution are mentioned.'), ('Why might passengers return to private cars?', ['Public transport is free.', 'Buses and trains are frequently late.', 'Cars are always slower.', 'Routes are too convenient.'], 'B', 'Unreliable service can make passengers choose private cars.'), ('Which is NOT mentioned as a requirement?', ['Convenient routes', 'Reasonable prices', 'Dependable service', 'Free food'], 'D', 'Free food is not mentioned.'), ("What does 'reliable' mean?", ['Dependable', 'Expensive', 'Crowded', 'Unusual'], 'A', 'Reliable means dependable or trustworthy.')]), ('5. Healthy Sleep', "Sleep plays an important role in students' physical and mental well-being. Students who do not get enough sleep may find it harder to concentrate and remember information. A regular sleep schedule can help the body maintain a healthy rhythm. Experts also recommend reducing screen use before bedtime because bright screens may make it harder for some people to fall asleep. Good sleep habits can therefore support both study and daily life.", [('Why is sleep important for students?', ['It supports physical and mental well-being.', 'It replaces studying.', 'It makes exams disappear.', 'It increases screen time.'], 'A', 'The passage directly connects sleep with physical and mental well-being.'), ('What may happen when students lack sleep?', ['They may concentrate less effectively.', 'They always remember more.', 'They need no food.', 'They study automatically.'], 'A', 'The passage says lack of sleep may make concentration and memory harder.'), ('What can a regular sleep schedule do?', ['Help maintain a healthy rhythm', 'Guarantee perfect grades', 'Remove all stress', 'Increase traffic'], 'A', 'A regular schedule can help the body maintain a healthy rhythm.'), ('What does the passage recommend before bedtime?', ['More screen use', 'Reducing screen use', 'Heavy exercise at midnight', 'Skipping sleep'], 'B', 'The passage recommends reducing screen use before bedtime.'), ('What is the main purpose of the passage?', ['To explain the importance of healthy sleep habits', 'To compare universities', 'To sell computers', 'To discuss public transport'], 'A', 'The whole passage explains how sleep affects students and gives healthy sleep advice.')]), ('6. Group Projects', 'Group projects are common at universities because they allow students to work together toward a shared goal. They can help students develop communication, cooperation and problem-solving skills. However, group work may also create difficulties when members have different schedules or do not contribute equally. A clear division of responsibilities can reduce these problems. Regular communication is also important because members can discuss progress and solve problems before the deadline.', [('Why are group projects common?', ['They help students work toward a shared goal.', 'They remove all deadlines.', 'They require no communication.', 'They replace all exams.'], 'A', 'The passage says group projects allow students to work together toward a shared goal.'), ('Which skill is mentioned?', ['Communication', 'Driving', 'Cooking', 'Painting'], 'A', 'Communication is one of the listed skills.'), ('What can cause difficulties?', ['Different schedules and unequal contribution', 'Too many holidays', 'Free transport', 'Short books'], 'A', 'Both problems are explicitly mentioned.'), ('How can problems be reduced?', ['Avoid communication', 'Clearly divide responsibilities', 'Wait until the deadline', 'Let one person do everything'], 'B', 'A clear division of responsibilities can reduce difficulties.'), ('Why is regular communication important?', ['It helps members discuss progress and solve problems.', 'It makes deadlines disappear.', 'It reduces study time to zero.', 'It prevents teamwork.'], 'A', 'Communication helps the group identify and solve problems before the deadline.')]), ('7. Saving Money as a Student', 'Students often need to manage limited budgets. One simple way to save money is to plan meals before shopping and avoid unnecessary purchases. Students can also compare prices and make use of discounts available to them. Keeping a record of spending can help them understand where their money goes. The goal is not to avoid spending completely, but to make thoughtful decisions and prioritize essential expenses.', [('What is the passage mainly about?', ['Ways students can manage their money', 'How to get a bank loan', 'Why shopping is difficult', 'How to become a teacher'], 'A', 'The passage gives practical ways for students to manage limited budgets.'), ('What can students do before shopping?', ['Plan meals', 'Buy everything immediately', 'Ignore prices', 'Borrow more money'], 'A', 'Planning meals before shopping is recommended.'), ('Why keep a record of spending?', ['To understand where money goes', 'To increase prices', 'To avoid studying', 'To lose receipts'], 'A', 'A spending record helps students understand their spending patterns.'), ('What is the goal?', ['Never spend money', 'Make thoughtful spending decisions', 'Buy more unnecessary items', 'Avoid essential expenses'], 'B', 'The passage says the goal is thoughtful decisions and prioritizing essentials.'), ("What does 'prioritize' mean?", ['Give greater importance to', 'Forget completely', 'Sell', 'Hide'], 'A', 'Prioritize means to give something greater importance.')]), ('8. Volunteering', 'Volunteering can benefit both communities and students. Students may help at community events, support younger learners or assist organizations with their activities. Through these experiences, students can develop teamwork, communication and organizational skills. Volunteering may also help students understand social issues from a different perspective. Although it takes time, many students find that meaningful volunteer work gives them a stronger sense of connection to their community.', [('Who can benefit from volunteering?', ['Only organizations', 'Both communities and students', 'Only teachers', 'Only businesses'], 'B', 'The passage states that volunteering can benefit both communities and students.'), ('Which activity is mentioned?', ['Supporting younger learners', 'Driving buses', 'Building computers', 'Selling houses'], 'A', 'Supporting younger learners is one of the examples.'), ('What skills can volunteering develop?', ['Teamwork and communication', 'Only mathematics', 'Only driving', 'None'], 'A', 'Teamwork, communication and organizational skills are mentioned.'), ('What may volunteering help students understand?', ['Social issues from another perspective', 'Traffic rules', 'Cooking methods', 'Weather forecasts'], 'A', 'The passage says volunteering may provide a different perspective on social issues.'), ('How do many students feel about meaningful volunteering?', ['More connected to their community', 'Completely isolated', 'Uninterested in society', 'Unable to study'], 'A', 'The passage says it can give students a stronger sense of connection to their community.')]), ('9. The Importance of Exercise', 'Regular exercise does not necessarily require expensive equipment or a gym membership. Walking, cycling and simple body-weight exercises can all provide physical benefits. For university students, exercise may also be a useful way to take a break from long periods of sitting and studying. The key is consistency. A short amount of exercise done regularly can be more practical than an intense workout that happens only occasionally.', [('What is the main point?', ['Regular exercise can be simple and practical.', 'Only gyms provide exercise.', 'Students should exercise once a month.', 'Exercise requires expensive equipment.'], 'A', 'The passage emphasizes simple, consistent exercise rather than expensive or occasional workouts.'), ('Which activity is mentioned?', ['Walking', 'Skiing', 'Golf only', 'Swimming only'], 'A', 'Walking is specifically mentioned.'), ('Why can exercise help students?', ['It can provide a break from long periods of sitting and studying.', 'It removes all assignments.', 'It replaces sleep.', 'It guarantees high grades.'], 'A', 'The passage says exercise can be a useful break from sitting and studying.'), ("What does 'consistency' mean?", ['Doing something regularly', 'Doing something once', 'Avoiding activity', 'Changing plans every minute'], 'A', 'Consistency means maintaining a regular pattern.'), ('Which is more practical according to the passage?', ['A short regular workout', 'An intense workout once a year', 'No exercise', 'Only expensive gym training'], 'A', 'The passage directly says short regular exercise can be more practical.')]), ('10. Preparing for an Examination', 'Effective exam preparation usually begins before the final day. Students can divide a large amount of material into smaller sections and review them over several days. Practice questions are useful because they show which areas need more attention. It is also important to leave enough time for sleep before the exam. Studying all night may seem productive, but tired students can have difficulty concentrating. A balanced plan is therefore more effective than last-minute study.', [('When should exam preparation begin?', ['Before the final day', 'Only after the exam', 'During the exam', 'One minute before the exam'], 'A', 'The passage says effective preparation usually begins before the final day.'), ('How can students handle a large amount of material?', ['Divide it into smaller sections', 'Ignore it', 'Study everything at once', 'Wait for the teacher'], 'A', 'Breaking material into smaller sections is recommended.'), ('Why are practice questions useful?', ['They show areas needing more attention.', 'They remove the need to study.', 'They guarantee full marks.', 'They make exams shorter.'], 'A', 'Practice questions help identify weak areas.'), ('Why is sleep important before an exam?', ['Tired students may have difficulty concentrating.', 'Sleep makes notes longer.', 'Sleep replaces revision.', 'It guarantees an easy exam.'], 'A', 'The passage connects lack of sleep with difficulty concentrating.'), ('What is the best conclusion?', ['A balanced preparation plan is more effective than last-minute study.', 'Students should always study all night.', 'Practice is unnecessary.', 'Sleep should be avoided before exams.'], 'A', 'The final sentence states that a balanced plan is more effective.')])];
+
+/* =====================================================
+   语法数据
+===================================================== */
+
+const G = [
+
+{
+title:"一般现在时",
+structure:"主语 + 动词原形；第三人称单数通常加 -s/-es",
+words:"usually, often, always, every day",
+example:"She usually studies English after dinner.",
+question:"He ___ English every day.",
+options:["study","studies","studied","studying"],
+answer:"B",
+explain:"every day 表示习惯性动作，He 是第三人称单数，所以用 studies。"
+},
+
+{
+title:"一般过去时",
+structure:"主语 + 动词过去式；否定用 did not + 动词原形",
+words:"yesterday, last week, ago",
+example:"I visited Singapore last year.",
+question:"I ___ him yesterday.",
+options:["see","saw","seen","seeing"],
+answer:"B",
+explain:"yesterday 是明确的过去时间，使用一般过去时 saw。"
+},
+
+{
+title:"一般将来时",
+structure:"will + 动词原形；be going to + 动词原形",
+words:"tomorrow, next week, soon",
+example:"I will finish the report tomorrow.",
+question:"She ___ call you tomorrow.",
+options:["will","did","has","was"],
+answer:"A",
+explain:"tomorrow 表示将来，will 后接动词原形。"
+},
+
+{
+title:"现在进行时",
+structure:"am/is/are + doing",
+words:"now, right now, at the moment",
+example:"They are studying now.",
+question:"Look! The children ___.",
+options:["play","played","are playing","have played"],
+answer:"C",
+explain:"Look 表明动作正在发生，用现在进行时。"
+},
+
+{
+title:"过去进行时",
+structure:"was/were + doing",
+words:"while, when, at 8 p.m. yesterday",
+example:"I was reading when he called.",
+question:"At 9 last night, I ___ TV.",
+options:["watch","watched","was watching","have watched"],
+answer:"C",
+explain:"过去某一具体时刻正在进行，用过去进行时。"
+},
+
+{
+title:"现在完成时",
+structure:"have/has + 过去分词",
+words:"already, yet, ever, never, just, since, for",
+example:"She has lived here for three years.",
+question:"He ___ never ___ to London.",
+options:[
+"has / been",
+"did / go",
+"is / going",
+"was / go"
+],
+answer:"A",
+explain:"never 常与现在完成时搭配；He 用 has，been 是过去分词。"
+},
+
+{
+title:"过去完成时",
+structure:"had + 过去分词",
+words:"before, after, by the time, already",
+example:"The train had left before we arrived.",
+question:"By the time I arrived, she ___ already ___.",
+options:[
+"has / left",
+"had / left",
+"was / leaving",
+"will / leave"
+],
+answer:"B",
+explain:"arrived 是过去时间点，leave 在此之前已经完成。"
+},
+
+{
+title:"主将从现",
+structure:"If / When / Before / After / As soon as + 一般现在时；主句 + will + 原形",
+words:"if, when, before, after, as soon as, unless",
+example:"If it rains tomorrow, I will stay home.",
+question:"If it ___ tomorrow, we will stay home.",
+options:[
+"will rain",
+"rains",
+"rained",
+"is raining"
+],
+answer:"B",
+explain:"if 引导条件从句，即使表示将来，也通常使用一般现在时。"
+},
+
+{
+title:"虚拟条件句",
+structure:"现在相反：If + 过去式, would + 原形；过去相反：If + had done, would have done",
+words:"if, were, had done, would have done",
+example:"If I were you, I would study harder.",
+question:"If I ___ more time, I would learn another language.",
+options:[
+"have",
+"had",
+"will have",
+"have had"
+],
+answer:"B",
+explain:"would + 原形表示与现在事实相反，if 从句用过去式 had。"
+},
+
+{
+title:"情态动词",
+structure:"情态动词 + 动词原形",
+words:"can, could, may, might, must, should, would",
+example:"You should get more rest.",
+question:"You ___ finish the work today.",
+options:[
+"must",
+"must to",
+"musts",
+"are must"
+],
+answer:"A",
+explain:"情态动词后面直接接动词原形。"
+},
+
+{
+title:"被动语态",
+structure:"be + 过去分词",
+words:"by + 执行者（可省略）",
+example:"The report was written by John.",
+question:"English ___ in many countries.",
+options:[
+"speaks",
+"is spoken",
+"spoken",
+"is speaking"
+],
+answer:"B",
+explain:"English 是动作承受者，一般现在时被动语态为 is spoken。"
+},
+
+{
+title:"主谓一致",
+structure:"谓语形式必须与主语的人称和数一致",
+words:"each, every, everyone, neither, either",
+example:"Everyone likes music.",
+question:"Everyone ___ responsible for the result.",
+options:[
+"are",
+"is",
+"be",
+"were"
+],
+answer:"B",
+explain:"everyone 语法上视为单数，所以使用 is。"
+},
+
+{
+title:"定语从句",
+structure:"先行词 + who / which / that + 从句",
+words:"who, which, that, whose, where",
+example:"The book that you gave me is useful.",
+question:"The student ___ won the prize is my friend.",
+options:[
+"which",
+"who",
+"where",
+"what"
+],
+answer:"B",
+explain:"student 指人，所以使用 who。"
+},
+
+{
+title:"宾语从句",
+structure:"主句 + 引导词 + 陈述语序",
+words:"that, whether, if, what, why, how",
+example:"I know where he lives.",
+question:"I don't know ___ she is coming.",
+options:[
+"is",
+"whether",
+"does",
+"did"
+],
+answer:"B",
+explain:"宾语从句使用陈述语序，whether 表示“是否”。"
+},
+
+{
+title:"非谓语动词",
+structure:"to do / doing / done",
+words:"want to do, enjoy doing, interested in doing",
+example:"I enjoy reading English articles.",
+question:"She enjoys ___ books.",
+options:[
+"read",
+"to read",
+"reading",
+"reads"
+],
+answer:"C",
+explain:"enjoy 后接动名词 doing。"
+},
+
+{
+title:"比较级",
+structure:"短形容词 + er / more + 长形容词，常与 than 搭配",
+words:"than, much, far, even",
+example:"This book is more useful than that one.",
+question:"This question is ___ than the last one.",
+options:[
+"easy",
+"easier",
+"more easy",
+"easiest"
+],
+answer:"B",
+explain:"easy 的比较级为 easier。"
+}
+
+];
+
+
+/* =====================================================
+   阅读数据
+===================================================== */
+
+const R = [
+
+{
+title:"1. University Library",
+
+article:
+"University libraries are no longer places where students only borrow books. Many libraries now provide quiet study areas, group discussion rooms, computers and online databases. Some even offer workshops on academic writing and research skills. However, students still need to use the facilities responsibly. Keeping noise low, returning books on time and respecting other students are simple but important rules.",
+
+questions:[
+
+{
+q:"What is the main idea of the passage?",
+options:[
+"Libraries are becoming smaller.",
+"Modern university libraries offer many kinds of services.",
+"Students should stop borrowing books.",
+"Libraries are only useful for research."
+],
+answer:"B",
+explain:"文章说明现代大学图书馆除了借书，还提供许多学习和研究服务。"
+},
+
+{
+q:"Which service is mentioned in the passage?",
+options:[
+"Driving lessons",
+"Cooking classes",
+"Academic writing workshops",
+"Sports training"
+],
+answer:"C",
+explain:"文章明确提到 academic writing and research workshops。"
+},
+
+{
+q:"What should students do in a library?",
+options:[
+"Make loud phone calls",
+"Return books on time",
+"Eat everywhere",
+"Ignore other students"
+],
+answer:"B",
+explain:"文章提到学生应该按时归还书籍，并尊重其他学生。"
+},
+
+{
+q:"Why are libraries still important?",
+options:[
+"They provide study and research resources.",
+"They sell textbooks.",
+"They replace classrooms.",
+"They are always open."
+],
+answer:"A",
+explain:"图书馆提供学习空间、电脑、数据库和研究支持。"
+},
+
+{
+q:"What does 'responsibly' most nearly mean?",
+options:[
+"Carelessly",
+"Properly",
+"Quickly",
+"Secretly"
+],
+answer:"B",
+explain:"这里 responsibly 表示负责任地、恰当地。"
+}
+
+]
+},
+
+
+{
+title:"2. A Part-time Job",
+
+article:
+"Many university students choose to take part-time jobs. A job can help students earn money and develop useful skills. For example, working in a café may improve communication and customer-service skills. However, students need to manage their time carefully. If work takes too much time, students may have less time for classes, assignments and rest. Therefore, a part-time job is most helpful when it fits a student's study schedule.",
+
+questions:[
+
+{
+q:"Why do students take part-time jobs?",
+options:[
+"Only for entertainment",
+"To earn money and develop skills",
+"To avoid classes",
+"To travel abroad"
+],
+answer:"B",
+explain:"兼职工作的两个主要好处是赚钱和培养实用技能。"
+},
+
+{
+q:"What skill may working in a café improve?",
+options:[
+"Driving",
+"Programming",
+"Customer service",
+"Swimming"
+],
+answer:"C",
+explain:"文章直接提到了 customer-service skills。"
+},
+
+{
+q:"What problem can too much work cause?",
+options:[
+"More free time",
+"Less time for study and rest",
+"Better grades automatically",
+"More holidays"
+],
+answer:"B",
+explain:"工作时间太多会减少学习、上课、完成作业和休息的时间。"
+},
+
+{
+q:"What is the writer's advice?",
+options:[
+"Students should never work.",
+"Students should work full-time.",
+"A job should fit the study schedule.",
+"Students should leave university."
+],
+answer:"C",
+explain:"作者认为兼职工作应该与学生的学习时间安排相适应。"
+},
+
+{
+q:"What does 'manage' mean in 'manage their time'?",
+options:[
+"Control and organize",
+"Forget",
+"Spend carelessly",
+"Reduce"
+],
+answer:"A",
+explain:"manage time 的意思是控制和合理安排时间。"
+}
+
+]
+},
+
+
+{
+title:"3. Online Learning",
+
+article:
+"Online learning has become an important part of education. It allows students to watch lectures, read materials and complete activities from different places. This flexibility is especially useful for students with busy schedules. However, online learning also requires self-discipline. Without a regular study plan, students may postpone their work. Successful online learners usually set clear goals, follow a timetable and communicate with teachers when they need help.",
+
+questions:[
+
+{
+q:"What is one advantage of online learning?",
+options:[
+"It requires no study.",
+"It offers flexibility.",
+"It removes all assignments.",
+"It guarantees high grades."
+],
+answer:"B",
+explain:"线上学习最大的优势之一是灵活，可以在不同地点学习。"
+},
+
+{
+q:"What does online learning require?",
+options:[
+"Self-discipline",
+"A driving license",
+"A full-time job",
+"No planning"
+],
+answer:"A",
+explain:"文章明确指出 online learning requires self-discipline。"
+},
+
+{
+q:"What may happen without a study plan?",
+options:[
+"Students may postpone work.",
+"Students finish earlier.",
+"Students never need teachers.",
+"Students get automatic feedback."
+],
+answer:"A",
+explain:"没有学习计划，学生可能会推迟完成学习任务。"
+},
+
+{
+q:"What do successful online learners usually do?",
+options:[
+"Avoid teachers",
+"Set goals and follow a timetable",
+"Study only at night",
+"Never communicate"
+],
+answer:"B",
+explain:"成功的线上学习者通常会设定目标并遵守时间表。"
+},
+
+{
+q:"What is the best title?",
+options:[
+"The History of Schools",
+"How to Succeed in Online Learning",
+"Why Students Dislike Teachers",
+"The Cost of Computers"
+],
+answer:"B",
+explain:"全文重点是线上学习的优势以及如何取得成功。"
+}
+
+]
+},
+
+
+{
+title:"4. Public Transport",
+
+article:
+"Public transport is widely used in large cities because it can carry many people at the same time. Buses and trains may also reduce the number of private cars on the road. This can help reduce traffic congestion and air pollution. However, public transport systems need to be reliable. If buses or trains are frequently late, passengers may choose to use private cars instead. Good public transport therefore requires convenient routes, reasonable prices and dependable service.",
+
+questions:[
+
+{
+q:"Why is public transport useful in large cities?",
+options:[
+"It carries many people.",
+"It makes cars cheaper.",
+"It stops all pollution.",
+"It removes roads."
+],
+answer:"A",
+explain:"公共交通可以同时运送很多人。"
+},
+
+{
+q:"What can fewer private cars help reduce?",
+options:[
+"Traffic congestion and air pollution",
+"University fees",
+"Rainfall",
+"Homework"
+],
+answer:"A",
+explain:"减少私家车可以减少交通拥堵和空气污染。"
+},
+
+{
+q:"Why might passengers return to private cars?",
+options:[
+"Public transport is free.",
+"Buses and trains are frequently late.",
+"Cars are always slower.",
+"Routes are too convenient."
+],
+answer:"B",
+explain:"如果公共交通经常晚点，乘客可能重新选择私家车。"
+},
+
+{
+q:"Which is NOT mentioned as a requirement?",
+options:[
+"Convenient routes",
+"Reasonable prices",
+"Dependable service",
+"Free food"
+],
+answer:"D",
+explain:"文章没有提到免费食物。"
+},
+
+{
+q:"What does 'reliable' mean?",
+options:[
+"Dependable",
+"Expensive",
+"Crowded",
+"Unusual"
+],
+answer:"A",
+explain:"reliable 表示可靠的、值得信赖的。"
+}
+
+]
+},
+
+
+{
+title:"5. Healthy Sleep",
+
+article:
+"Sleep plays an important role in students' physical and mental well-being. Students who do not get enough sleep may find it harder to concentrate and remember information. A regular sleep schedule can help the body maintain a healthy rhythm. Experts also recommend reducing screen use before bedtime because bright screens may make it harder for some people to fall asleep. Good sleep habits can therefore support both study and daily life.",
+
+questions:[
+
+{
+q:"Why is sleep important for students?",
+options:[
+"It supports physical and mental well-being.",
+"It replaces studying.",
+"It makes exams disappear.",
+"It increases screen time."
+],
+answer:"A",
+explain:"睡眠对学生的身体和心理健康都非常重要。"
+},
+
+{
+q:"What may happen when students lack sleep?",
+options:[
+"They may concentrate less effectively.",
+"They always remember more.",
+"They need no food.",
+"They study automatically."
+],
+answer:"A",
+explain:"睡眠不足可能导致注意力和记忆能力下降。"
+},
+
+{
+q:"What can a regular sleep schedule do?",
+options:[
+"Help maintain a healthy rhythm",
+"Guarantee perfect grades",
+"Remove all stress",
+"Increase traffic"
+],
+answer:"A",
+explain:"规律的睡眠时间有助于身体维持健康的节律。"
+},
+
+{
+q:"What does the passage recommend before bedtime?",
+options:[
+"More screen use",
+"Reducing screen use",
+"Heavy exercise at midnight",
+"Skipping sleep"
+],
+answer:"B",
+explain:"文章建议睡前减少屏幕使用。"
+},
+
+{
+q:"What is the main purpose of the passage?",
+options:[
+"To explain the importance of healthy sleep habits",
+"To compare universities",
+"To sell computers",
+"To discuss public transport"
+],
+answer:"A",
+explain:"全文主要介绍健康睡眠习惯的重要性。"
+}
+
+]
+},
+
+
+{
+title:"6. Group Projects",
+
+article:
+"Group projects are common at universities because they allow students to work together toward a shared goal. They can help students develop communication, cooperation and problem-solving skills. However, group work may also create difficulties when members have different schedules or do not contribute equally. A clear division of responsibilities can reduce these problems. Regular communication is also important because members can discuss progress and solve problems before the deadline.",
+
+questions:[
+
+{
+q:"Why are group projects common?",
+options:[
+"They help students work toward a shared goal.",
+"They remove all deadlines.",
+"They require no communication.",
+"They replace all exams."
+],
+answer:"A",
+explain:"小组项目让学生共同完成一个目标。"
+},
+
+{
+q:"Which skill is mentioned?",
+options:[
+"Communication",
+"Driving",
+"Cooking",
+"Painting"
+],
+answer:"A",
+explain:"文章提到了 communication。"
+},
+
+{
+q:"What can cause difficulties?",
+options:[
+"Different schedules and unequal contribution",
+"Too many holidays",
+"Free transport",
+"Short books"
+],
+answer:"A",
+explain:"不同时间安排以及贡献不均都会造成小组合作困难。"
+},
+
+{
+q:"How can problems be reduced?",
+options:[
+"Avoid communication",
+"Clearly divide responsibilities",
+"Wait until the deadline",
+"Let one person do everything"
+],
+answer:"B",
+explain:"清楚地分配任务可以减少小组合作中的问题。"
+},
+
+{
+q:"Why is regular communication important?",
+options:[
+"It helps members discuss progress and solve problems.",
+"It makes deadlines disappear.",
+"It reduces study time to zero.",
+"It prevents teamwork."
+],
+answer:"A",
+explain:"定期沟通可以让成员讨论进度并及时解决问题。"
+}
+
+]
+},
+
+
+{
+title:"7. Saving Money as a Student",
+
+article:
+"Students often need to manage limited budgets. One simple way to save money is to plan meals before shopping and avoid unnecessary purchases. Students can also compare prices and make use of discounts available to them. Keeping a record of spending can help them understand where their money goes. The goal is not to avoid spending completely, but to make thoughtful decisions and prioritize essential expenses.",
+
+questions:[
+
+{
+q:"What is the passage mainly about?",
+options:[
+"Ways students can manage their money",
+"How to get a bank loan",
+"Why shopping is difficult",
+"How to become a teacher"
+],
+answer:"A",
+explain:"文章介绍学生如何管理有限的预算。"
+},
+
+{
+q:"What can students do before shopping?",
+options:[
+"Plan meals",
+"Buy everything immediately",
+"Ignore prices",
+"Borrow more money"
+],
+answer:"A",
+explain:"购物前规划饮食可以帮助学生节省开支。"
+},
+
+{
+q:"Why keep a record of spending?",
+options:[
+"To understand where money goes",
+"To increase prices",
+"To avoid studying",
+"To lose receipts"
+],
+answer:"A",
+explain:"记录消费可以帮助学生了解钱花在哪里。"
+},
+
+{
+q:"What is the goal?",
+options:[
+"Never spend money",
+"Make thoughtful spending decisions",
+"Buy more unnecessary items",
+"Avoid essential expenses"
+],
+answer:"B",
+explain:"目标不是完全不花钱，而是做出合理的消费决定。"
+},
+
+{
+q:"What does 'prioritize' mean?",
+options:[
+"Give greater importance to",
+"Forget completely",
+"Sell",
+"Hide"
+],
+answer:"A",
+explain:"prioritize 表示优先考虑、给予更高的重要性。"
+}
+
+]
+},
+
+
+{
+title:"8. Volunteering",
+
+article:
+"Volunteering can benefit both communities and students. Students may help at community events, support younger learners or assist organizations with their activities. Through these experiences, students can develop teamwork, communication and organizational skills. Volunteering may also help students understand social issues from a different perspective. Although it takes time, many students find that meaningful volunteer work gives them a stronger sense of connection to their community.",
+
+questions:[
+
+{
+q:"Who can benefit from volunteering?",
+options:[
+"Only organizations",
+"Both communities and students",
+"Only teachers",
+"Only businesses"
+],
+answer:"B",
+explain:"志愿活动可以同时帮助社区和学生。"
+},
+
+{
+q:"Which activity is mentioned?",
+options:[
+"Supporting younger learners",
+"Driving buses",
+"Building computers",
+"Selling houses"
+],
+answer:"A",
+explain:"文章举例提到帮助年轻学习者。"
+},
+
+{
+q:"What skills can volunteering develop?",
+options:[
+"Teamwork and communication",
+"Only mathematics",
+"Only driving",
+"None"
+],
+answer:"A",
+explain:"志愿活动可以培养团队合作、沟通和组织能力。"
+},
+
+{
+q:"What may volunteering help students understand?",
+options:[
+"Social issues from another perspective",
+"Traffic rules",
+"Cooking methods",
+"Weather forecasts"
+],
+answer:"A",
+explain:"志愿活动可以让学生从不同角度理解社会问题。"
+},
+
+{
+q:"How do many students feel about meaningful volunteering?",
+options:[
+"More connected to their community",
+"Completely isolated",
+"Uninterested in society",
+"Unable to study"
+],
+answer:"A",
+explain:"有意义的志愿工作能够增强学生与社区之间的联系。"
+}
+
+]
+},
+
+
+{
+title:"9. The Importance of Exercise",
+
+article:
+"Regular exercise does not necessarily require expensive equipment or a gym membership. Walking, cycling and simple body-weight exercises can all provide physical benefits. For university students, exercise may also be a useful way to take a break from long periods of sitting and studying. The key is consistency. A short amount of exercise done regularly can be more practical than an intense workout that happens only occasionally.",
+
+questions:[
+
+{
+q:"What is the main point?",
+options:[
+"Regular exercise can be simple and practical.",
+"Only gyms provide exercise.",
+"Students should exercise once a month.",
+"Exercise requires expensive equipment."
+],
+answer:"A",
+explain:"文章强调规律运动可以简单、方便而且实用。"
+},
+
+{
+q:"Which activity is mentioned?",
+options:[
+"Walking",
+"Skiing",
+"Golf only",
+"Swimming only"
+],
+answer:"A",
+explain:"文章明确提到了 walking。"
+},
+
+{
+q:"Why can exercise help students?",
+options:[
+"It can provide a break from long periods of sitting and studying.",
+"It removes all assignments.",
+"It replaces sleep.",
+"It guarantees high grades."
+],
+answer:"A",
+explain:"运动可以帮助学生从长时间坐着学习中得到休息。"
+},
+
+{
+q:"What does 'consistency' mean?",
+options:[
+"Doing something regularly",
+"Doing something once",
+"Avoiding activity",
+"Changing plans every minute"
+],
+answer:"A",
+explain:"consistency 表示持续、规律地做某事。"
+},
+
+{
+q:"Which is more practical according to the passage?",
+options:[
+"A short regular workout",
+"An intense workout once a year",
+"No exercise",
+"Only expensive gym training"
+],
+answer:"A",
+explain:"文章认为短时间但规律的运动更加实际。"
+}
+
+]
+},
+
+
+{
+title:"10. Preparing for an Examination",
+
+article:
+"Effective exam preparation usually begins before the final day. Students can divide a large amount of material into smaller sections and review them over several days. Practice questions are useful because they show which areas need more attention. It is also important to leave enough time for sleep before the exam. Studying all night may seem productive, but tired students can have difficulty concentrating. A balanced plan is therefore more effective than last-minute study.",
+
+questions:[
+
+{
+q:"When should exam preparation begin?",
+options:[
+"Before the final day",
+"Only after the exam",
+"During the exam",
+"One minute before the exam"
+],
+answer:"A",
+explain:"有效的考试准备应该在考试前就开始，而不是最后一天才开始。"
+},
+
+{
+q:"How can students handle a large amount of material?",
+options:[
+"Divide it into smaller sections",
+"Ignore it",
+"Study everything at once",
+"Wait for the teacher"
+],
+answer:"A",
+explain:"把大量学习材料分成小部分可以更容易复习。"
+},
+
+{
+q:"Why are practice questions useful?",
+options:[
+"They show areas needing more attention.",
+"They remove the need to study.",
+"They guarantee full marks.",
+"They make exams shorter."
+],
+answer:"A",
+explain:"练习题能够帮助学生找到自己薄弱的知识点。"
+},
+
+{
+q:"Why is sleep important before an exam?",
+options:[
+"Tired students may have difficulty concentrating.",
+"Sleep makes notes longer.",
+"Sleep replaces revision.",
+"It guarantees an easy exam."
+],
+answer:"A",
+explain:"睡眠不足会影响考试时的注意力。"
+},
+
+{
+q:"What is the best conclusion?",
+options:[
+"A balanced preparation plan is more effective than last-minute study.",
+"Students should always study all night.",
+"Practice is unnecessary.",
+"Sleep should be avoided before exams."
+],
+answer:"A",
+explain:"文章最后指出平衡的复习计划比临时抱佛脚更加有效。"
+}
+
+]
+}
+
+];
+
+
+/* =====================================================
+   页面切换
+===================================================== */
 
 function switchSec(id,btn){
- document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
- btn.classList.add('active'); window.scrollTo(0,0);
+
+  document.querySelectorAll(".section").forEach(function(section){
+    section.classList.remove("active");
+  });
+
+  var target=document.getElementById(id);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document.querySelectorAll("nav button").forEach(function(button){
+    button.classList.remove("active");
+  });
+
+  if(btn){
+    btn.classList.add("active");
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
-function showGrammar(i){
- const g=G[i],d=document.getElementById('grammarDetail');
- d.innerHTML=`<h2>📘 ${g[0]}</h2>
- <div class="box"><b>结构</b><br>${g[1]}</div>
- <h3>常见标志词</h3><p>${g[2]}</p>
- <h3>例句</h3><div class="article">${g[3]}</div>
- <h3>⚠️ 小练习</h3><div class="question"><b>${g[4]}</b>
- ${g[5].map((x,j)=>`<div class="choice">${String.fromCharCode(65+j)}. ${x}</div>`).join('')}
- <button class="action" onclick="document.getElementById('ga'+${i}).classList.toggle('show')">查看答案与解析</button>
- <div class="answer" id="ga${i}"><b>答案：${g[6]}</b><br>${g[7]}</div></div>
- <button class="action" onclick="d.classList.remove('show')">收起</button>`;
- d.classList.add('show');d.scrollIntoView({behavior:'smooth'});
+
+
+/* =====================================================
+   显示语法详情
+===================================================== */
+
+function showGrammar(index){
+
+  var g=G[index];
+
+  if(!g){
+    return;
+  }
+
+  var detail=document.getElementById("grammarDetail");
+
+  var options="";
+
+  g.options.forEach(function(option,i){
+
+    options +=
+      '<div class="choice">' +
+      String.fromCharCode(65+i) +
+      ". " +
+      option +
+      "</div>";
+
+  });
+
+
+  detail.innerHTML=
+
+    "<h2>📘 " + g.title + "</h2>" +
+
+    '<div class="box">' +
+    "<b>结构</b><br>" +
+    g.structure +
+    "</div>" +
+
+    "<h3>🔑 常见标志词</h3>" +
+
+    "<p>" +
+    g.words +
+    "</p>" +
+
+    "<h3>📝 例句</h3>" +
+
+    '<div class="article">' +
+    g.example +
+    "</div>" +
+
+    "<h3>⚠️ 小练习</h3>" +
+
+    '<div class="question">' +
+
+    "<b>" +
+    g.question +
+    "</b>" +
+
+    options +
+
+    '<button class="action" onclick="toggleAnswer(\'grammarAnswer' +
+    index +
+    '\')">' +
+
+    "查看答案与解析" +
+
+    "</button>" +
+
+    '<div class="answer" id="grammarAnswer' +
+    index +
+    '">' +
+
+    "<b>答案：" +
+    g.answer +
+    "</b><br>" +
+
+    g.explain +
+
+    "</div>" +
+
+    "</div>" +
+
+    '<button class="action back" onclick="closeGrammar()">' +
+    "← 返回语法列表" +
+    "</button>";
+
+
+  detail.classList.add("show");
+
+  setTimeout(function(){
+
+    detail.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  },50);
+
 }
-function showReading(i){
- const r=R[i],d=document.getElementById('readingDetail');
- let qs=r[2].map((q,k)=>`<div class="question"><b>${k+1}. ${q[0]}</b>
- ${q[1].map((x,j)=>`<div class="choice">${String.fromCharCode(65+j)}. ${x}</div>`).join('')}
- <button class="action" onclick="document.getElementById('ra'+${i}+'_'+${k}).classList.toggle('show')">查看答案与解析</button>
- <div class="answer" id="ra${i}_${k}"><b>答案：${q[2]}</b><br>${q[3]}</div></div>`).join('');
- d.innerHTML=`<h2>📖 ${r[0]}</h2><div class="article">${r[1]}</div><h3>Questions</h3>${qs}
- <button class="action" onclick="d.classList.remove('show')">收起</button>`;
- d.classList.add('show');d.scrollIntoView({behavior:'smooth'});
+
+
+/* =====================================================
+   关闭语法详情
+===================================================== */
+
+function closeGrammar(){
+
+  var detail=document.getElementById("grammarDetail");
+
+  detail.classList.remove("show");
+
+  document.getElementById("grammarGrid")
+    .scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
 }
+
+
+/* =====================================================
+   显示阅读
+===================================================== */
+
+function showReading(index){
+
+  var r=R[index];
+
+  if(!r){
+    return;
+  }
+
+  var detail=document.getElementById("readingDetail");
+
+  var questions="";
+
+
+  r.questions.forEach(function(q,index2){
+
+    var options="";
+
+    q.options.forEach(function(option,i){
+
+      options +=
+        '<div class="choice">' +
+        String.fromCharCode(65+i) +
+        ". " +
+        option +
+        "</div>";
+
+    });
+
+
+    questions +=
+
+      '<div class="question">' +
+
+      "<b>" +
+      (index2+1) +
+      ". " +
+      q.q +
+      "</b>" +
+
+      options +
+
+      '<button class="action" onclick="toggleAnswer(\'readingAnswer' +
+      index +
+      "_" +
+      index2 +
+      '\')">' +
+
+      "查看答案与解析" +
+
+      "</button>" +
+
+      '<div class="answer" id="readingAnswer' +
+      index +
+      "_" +
+      index2 +
+      '">' +
+
+      "<b>答案：" +
+      q.answer +
+      "</b><br>" +
+
+      q.explain +
+
+      "</div>" +
+
+      "</div>";
+
+  });
+
+
+  detail.innerHTML=
+
+    "<h2>📖 " +
+    r.title +
+    "</h2>" +
+
+    '<div class="article">' +
+    r.article +
+    "</div>" +
+
+    "<h3>Questions</h3>" +
+
+    questions +
+
+    '<button class="action back" onclick="closeReading()">' +
+    "← 返回阅读列表" +
+    "</button>";
+
+
+  detail.classList.add("show");
+
+
+  setTimeout(function(){
+
+    detail.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  },50);
+
+}
+
+
+/* =====================================================
+   关闭阅读
+===================================================== */
+
+function closeReading(){
+
+  var detail=document.getElementById("readingDetail");
+
+  detail.classList.remove("show");
+
+  document.getElementById("readingGrid")
+    .scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+}
+
+
+/* =====================================================
+   显示/隐藏答案
+===================================================== */
+
+function toggleAnswer(id){
+
+  var element=document.getElementById(id);
+
+  if(!element){
+    return;
+  }
+
+  element.classList.toggle("show");
+
+}
+
+
+/* =====================================================
+   生成语法卡片
+===================================================== */
+
+function renderGrammar(){
+
+  var grid=document.getElementById("grammarGrid");
+
+  grid.innerHTML="";
+
+
+  G.forEach(function(g,index){
+
+    var card=document.createElement("div");
+
+    card.className="card";
+
+    card.innerHTML=
+
+      '<span class="tag">语法</span>' +
+
+      "<h3>" +
+      g.title +
+      "</h3>" +
+
+      "<p>" +
+      g.structure +
+      "</p>" +
+
+      '<button type="button">查看详情 →</button>';
+
+
+    /*
+      关键修复：
+
+      整个卡片都可以点击。
+      不再依赖 HTML inline onclick。
+    */
+
+    card.addEventListener("click",function(){
+
+      showGrammar(index);
+
+    });
+
+
+    var button=card.querySelector("button");
+
+    button.addEventListener("click",function(event){
+
+      event.stopPropagation();
+
+      showGrammar(index);
+
+    });
+
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* =====================================================
+   生成阅读卡片
+===================================================== */
+
+function renderReading(){
+
+  var grid=document.getElementById("readingGrid");
+
+  grid.innerHTML="";
+
+
+  R.forEach(function(r,index){
+
+    var card=document.createElement("div");
+
+    card.className="card";
+
+    card.innerHTML=
+
+      '<span class="tag">5题</span>' +
+
+      "<h3>" +
+      r.title +
+      "</h3>" +
+
+      "<p>" +
+      r.article.substring(0,85) +
+      "...</p>" +
+
+      '<button type="button">开始练习 →</button>';
+
+
+    card.addEventListener("click",function(){
+
+      showReading(index);
+
+    });
+
+
+    var button=card.querySelector("button");
+
+    button.addEventListener("click",function(event){
+
+      event.stopPropagation();
+
+      showReading(index);
+
+    });
+
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* =====================================================
+   初始化
+===================================================== */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  renderGrammar();
+
+  renderReading();
+
+});
+
 </script>
-</body></html>
+
+</body>
+</html>
