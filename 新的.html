@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小T · SIM EPT 专属学习网站</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;background:#f6f7fb;color:#222}
+header{padding:32px 20px;background:linear-gradient(135deg,#6d5dfc,#9b7cff);color:white;border-radius:0 0 28px 28px}
+main{max-width:900px;margin:auto;padding:20px}.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+button,.topic{border:0;border-radius:14px;padding:13px;background:white;font-weight:700}
+.nav button.active{background:#222;color:#fff}.panel{display:none}.panel.active{display:block}
+.card{background:white;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 3px 14px #0001}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.topic{text-align:left;border:1px solid #eee}
+.topic small{display:block;color:#888;margin-top:5px}.back{display:none;margin:12px 0}
+.question{border-top:1px solid #eee;padding:14px 0}.option{display:block;padding:9px;margin:7px 0;border:1px solid #ddd;border-radius:9px}
+.answer{display:none;background:#f1f5f9;padding:10px;border-radius:9px;margin-top:8px}
+.show{background:#6d5dfc;color:#fff}.badge{color:#5b4bd8;background:#eee7ff;padding:4px 8px;border-radius:15px;font-size:12px}
+@media(max-width:600px){.grid{grid-template-columns:1fr 1fr}.nav button{font-size:13px}}
+</style>
+</head>
+<body>
+<header><main><h1>小T · SIM EPT</h1><p>专属英语冲刺学习网站</p></main></header>
+<main>
+<div class="nav">
+<button class="active" onclick="tab('grammar',this)">语法</button>
+<button onclick="tab('reading',this)">阅读</button>
+<button onclick="tab('listening',this)">听力</button>
+<button onclick="tab('writing',this)">写作</button>
+</div>
+
+<section id="grammar" class="panel active">
+<div class="card"><span class="badge">Grammar</span><h2>语法专项</h2><p>点击小模块即可进入详情。</p></div>
+<div id="topics" class="grid"></div>
+<button id="back" class="back" onclick="homeTopics()">← 返回语法目录</button>
+<div id="detail"></div>
+</section>
+
+<section id="reading" class="panel">
+<div class="card"><span class="badge">Reading</span><h2>SIM EPT 阅读练习</h2><p>10篇，每篇5题，含答案和解析。</p></div>
+<div id="reads"></div>
+</section>
+
+<section id="listening" class="panel"><div class="card"><span class="badge">Listening</span><h2>听力</h2><p>听力材料和题目模块。</p></div></section>
+<section id="writing" class="panel"><div class="card"><span class="badge">Writing</span><h2>写作</h2><p>写作题型、结构、范文和练习。</p></div></section>
+</main>
+
+<script>
+const topics={
+"一般现在时":"表示习惯、事实和经常发生的动作。结构：动词原形；第三人称单数通常加-s/-es。",
+"一般过去时":"表示过去已经发生并结束的动作。常见：yesterday、last week、ago。",
+"一般将来时":"表示将来动作。常见结构：will+动词原形；be going to+动词原形。",
+"现在进行时":"表示现在正在进行的动作。结构：am/is/are+V-ing。",
+"现在完成时":"表示过去发生且与现在有关的动作。结构：have/has+过去分词。",
+"过去进行时":"表示过去某一时刻正在进行的动作。结构：was/were+V-ing。",
+"过去完成时":"表示过去某一时间之前已经完成的动作。结构：had+过去分词。",
+"情态动词":"表示能力、可能、义务、建议等。情态动词后接动词原形。",
+"虚拟条件句":"与现在事实相反常见结构：If+过去式，would+动词原形。例：If I were you, I would study harder。",
+"主将从现":"when、if、unless等引导将来意义的条件/时间从句时，从句通常用一般现在时，主句用将来时。"
+};
+const topicBox=document.getElementById("topics");
+Object.keys(topics).forEach(k=>{
+let b=document.createElement("button");b.className="topic";b.innerHTML=k+"<small>点击查看详情 →</small>";
+b.onclick=()=>openTopic(k);topicBox.appendChild(b);
+});
+function tab(id,btn){document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));btn.classList.add("active")}
+function openTopic(k){
+document.getElementById("topics").style.display="none";document.getElementById("back").style.display="inline-block";
+document.getElementById("detail").innerHTML='<div class="card"><span class="badge">语法讲解</span><h2>'+k+'</h2><p>'+topics[k]+'</p><h3>小练习</h3><div class="question"><b>1. If I ___ you, I would study harder.</b><label class="option"><input type="radio"> am</label><label class="option"><input type="radio"> were</label><label class="option"><input type="radio"> will be</label><button class="show" onclick="this.nextElementSibling.style.display=\'block\'">查看答案</button><div class="answer">答案：were。解析：与现在事实相反的虚拟条件句使用 If + 过去式。</div></div></div>';
+}
+function homeTopics(){document.getElementById("topics").style.display="grid";document.getElementById("back").style.display="none";document.getElementById("detail").innerHTML=""}
+
+const texts=[
+["1","A New Study Routine","Regular short study sessions are often more effective than studying for many hours once a week.","规律学习比临时长时间学习更有效。"],
+["2","Learning from Mistakes","Mistakes are a natural part of language learning. Reviewing mistakes helps students improve.","错误可以帮助学习者进步。"],
+["3","A Busy Library","The library becomes busy before examinations because students need a quiet place to review.","考试前图书馆通常更忙。"],
+["4","Online Learning","Online resources are convenient, but learners need self-discipline.","在线学习方便，但需要自律。"],
+["5","Healthy Habits","Enough sleep can improve concentration and memory.","充足睡眠有助于注意力和记忆。"],
+["6","Group Discussion","Discussion can help students discover ideas they did not consider alone.","讨论可以带来新的观点。"],
+["7","Time Management","Breaking a large task into smaller steps makes it easier to finish on time.","把任务分成小步骤更容易完成。"],
+["8","Public Transport","Public transport is convenient for many students travelling to campus.","公共交通对学生上学很方便。"],
+["9","Reading News","Short English news articles can help learners understand vocabulary in context.","英语新闻可以帮助在语境中学习词汇。"],
+["10","Exam Preparation","Understanding question types, practising regularly and reviewing mistakes are useful for exam preparation.","了解题型、练习和复盘都很重要。"]
+];
+document.getElementById("reads").innerHTML=texts.map(x=>'<div class="card"><span class="badge">Reading '+x[0]+'</span><h3>'+x[1]+'</h3><p>'+x[2]+'</p>'+[1,2,3,4,5].map(n=>'<div class="question"><b>'+n+'. What is the main idea?</b><label class="option"><input type="radio"> The passage supports its main topic.</label><label class="option"><input type="radio"> The passage gives unrelated information.</label></div>').join("")+'<p><b>答案与解析：</b>'+x[3]+'</p></div>').join("");
+</script>
+</body></html>
