@@ -2,2096 +2,2713 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#6657f5">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小T · SIM EPT 冲刺学习站</title>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   background:#f5f6fa;
   color:#202124;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
-  "PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    Arial,
+    sans-serif;
 }
-button{font-family:inherit}
-.hidden{display:none!important}
+
+button{
+  font-family:inherit;
+}
+
+.app{
+  min-height:100vh;
+}
 
 .page{
   display:none;
   min-height:100vh;
 }
-.page.active{display:block}
 
-.top{
-  background:linear-gradient(135deg,#5d50e8,#8878f5);
+.page.active{
+  display:block;
+}
+
+/* =========================
+   首页
+========================= */
+
+.home{
+  background:
+    radial-gradient(circle at top right,#a999ff 0,#8b79f7 20%,transparent 45%),
+    linear-gradient(135deg,#6654ee,#8977f5);
   color:white;
-  padding:18px 16px;
+  min-height:100vh;
+}
+
+.home-inner{
+  max-width:1050px;
+  margin:auto;
+  padding:55px 18px 50px;
+}
+
+.logo{
+  width:64px;
+  height:64px;
+  border-radius:20px;
+  background:white;
+  color:#6654ee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:900;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
+  margin-bottom:22px;
+}
+
+.home h1{
+  margin:0;
+  font-size:38px;
+  line-height:1.2;
+}
+
+.home-sub{
+  font-size:17px;
+  opacity:.9;
+  margin-top:12px;
+  line-height:1.7;
+}
+
+.home-tip{
+  margin-top:28px;
+  padding:15px 17px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:15px;
+  line-height:1.7;
+}
+
+.menu-grid{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.menu-card{
+  border:0;
+  text-align:left;
+  padding:22px;
+  border-radius:20px;
+  background:white;
+  color:#202124;
+  cursor:pointer;
+  min-height:145px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  transition:.15s;
+}
+
+.menu-card:hover{
+  transform:translateY(-3px);
+}
+
+.menu-card:active{
+  transform:scale(.98);
+}
+
+.menu-icon{
+  font-size:30px;
+}
+
+.menu-card h3{
+  margin:12px 0 7px;
+  font-size:19px;
+}
+
+.menu-card p{
+  margin:0;
+  color:#737887;
+  line-height:1.5;
+}
+
+/* =========================
+   普通页面
+========================= */
+
+.topbar{
+  background:white;
+  border-bottom:1px solid #e8e9ee;
   position:sticky;
   top:0;
   z-index:20;
-  box-shadow:0 3px 15px #0002;
 }
-.top-inner{
-  max-width:1100px;
+
+.topbar-inner{
+  max-width:1000px;
   margin:auto;
+  padding:12px 16px;
   display:flex;
   align-items:center;
-  gap:14px;
-}
-.logo{
-  font-size:20px;
-  font-weight:900;
-}
-.top-sub{
-  opacity:.8;
-  font-size:13px;
-}
-.container{
-  width:min(1100px,calc(100% - 28px));
-  margin:auto;
+  gap:12px;
 }
 
-.home-hero{
-  padding:58px 0 35px;
-}
-.home-hero-box{
-  background:linear-gradient(135deg,#6657f5,#9184ff);
-  color:#fff;
-  border-radius:28px;
-  padding:40px 28px;
-  box-shadow:0 15px 40px #6657f530;
-}
-.home-hero h1{
-  margin:0 0 12px;
-  font-size:36px;
-}
-.home-hero p{
-  margin:0;
-  line-height:1.8;
-  opacity:.92;
-}
-
-.home-title{
-  margin:25px 0 16px;
-  font-size:24px;
-}
-
-.module-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:14px;
-  padding-bottom:40px;
-}
-.module{
-  min-height:190px;
-  border:0;
-  background:#fff;
-  border-radius:20px;
-  padding:22px 16px;
-  text-align:left;
-  cursor:pointer;
-  box-shadow:0 5px 20px #0000000b;
-  transition:.18s;
-}
-.module:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 28px #00000014;
-}
-.module:active{transform:scale(.98)}
-.module-icon{
-  font-size:38px;
-  margin-bottom:15px;
-}
-.module h2{
-  margin:0 0 8px;
-  font-size:19px;
-}
-.module p{
-  color:#667085;
-  line-height:1.55;
-  font-size:13px;
-  margin:0;
-}
-
-.section-page{
-  padding:25px 0 50px;
-}
-.page-head{
-  background:white;
-  border-radius:22px;
-  padding:25px;
-  margin-bottom:18px;
-  box-shadow:0 4px 18px #0000000a;
-}
-.page-head h1{
-  margin:0 0 8px;
-}
-.page-head p{
-  color:#667085;
-  line-height:1.7;
-  margin:0;
-}
-
-.back{
+.back-home{
   border:0;
   background:#eeeaff;
-  color:#5548cf;
-  padding:10px 15px;
+  color:#5144c7;
+  padding:9px 13px;
   border-radius:10px;
-  font-weight:800;
+  font-weight:700;
   cursor:pointer;
-  margin-bottom:16px;
+}
+
+.top-title{
+  font-weight:800;
+  font-size:18px;
+}
+
+.content{
+  max-width:1000px;
+  margin:auto;
+  padding:22px 15px 50px;
+}
+
+.hero{
+  background:white;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
+  margin-bottom:15px;
+}
+
+.hero h2{
+  margin:0 0 8px;
+}
+
+.hero p{
+  color:#6b7280;
+  line-height:1.7;
+  margin:0;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:14px;
 }
 
 .card{
-  background:#fff;
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 4px 16px #00000009;
-}
-.card.clickable{
+  background:white;
+  border-radius:17px;
+  padding:18px;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
   cursor:pointer;
   transition:.15s;
 }
-.card.clickable:hover{
+
+.card:hover{
   transform:translateY(-2px);
 }
-.card h2,.card h3{
-  margin-top:0;
+
+.card h3{
+  margin:9px 0 7px;
 }
+
 .card p{
-  color:#667085;
-  line-height:1.7;
+  color:#6b7280;
+  line-height:1.65;
 }
 
 .tag{
   display:inline-block;
-  padding:5px 10px;
   background:#eeeaff;
-  color:#5548cf;
+  color:#5546c9;
+  padding:5px 9px;
   border-radius:999px;
   font-size:12px;
-  font-weight:800;
-}
-
-.detail{
-  margin-top:18px;
-  background:#fff;
-  border-radius:20px;
-  padding:24px;
-  box-shadow:0 5px 20px #0000000b;
-}
-
-.knowledge{
-  background:#f7f7ff;
-  border-left:4px solid #6657f5;
-  padding:14px;
-  border-radius:10px;
-  margin:12px 0;
-  line-height:1.8;
-}
-
-.example{
-  background:#fafafa;
-  padding:15px;
-  border-radius:10px;
-  line-height:1.8;
-}
-
-.article{
-  background:#fafafa;
-  padding:18px;
-  border-radius:14px;
-  line-height:1.9;
-  margin:15px 0;
-}
-
-.question{
-  border:1px solid #e5e7eb;
-  border-radius:15px;
-  padding:17px;
-  margin:14px 0;
-  background:#fff;
-}
-.question-title{
-  font-weight:800;
-  line-height:1.7;
-  margin-bottom:12px;
-}
-
-.option{
-  width:100%;
-  text-align:left;
-  border:2px solid #e8eaf0;
-  background:#f8fafc;
-  border-radius:10px;
-  padding:12px;
-  margin:7px 0;
-  cursor:pointer;
-  transition:.12s;
-}
-.option:hover{
-  border-color:#aaa1ff;
-}
-.option.selected{
-  border-color:#6657f5;
-  background:#eeeaff;
-  color:#4638bc;
-  font-weight:800;
-}
-.option.correct{
-  border-color:#16a34a!important;
-  background:#dcfce7!important;
-  color:#166534!important;
-}
-.option.wrong{
-  border-color:#dc2626!important;
-  background:#fee2e2!important;
-  color:#991b1b!important;
+  font-weight:700;
 }
 
 .action{
   border:0;
-  background:#6657f5;
-  color:#fff;
-  padding:11px 16px;
-  border-radius:10px;
-  font-weight:800;
+  border-radius:11px;
+  padding:11px 15px;
+  background:#6957f5;
+  color:white;
+  font-weight:700;
   cursor:pointer;
 }
+
 .action.secondary{
   background:#eeeaff;
   color:#5144c7;
 }
+
 .action.danger{
-  background:#dc2626;
-}
-.action.green{
-  background:#16a34a;
+  background:#fff0f0;
+  color:#c0392b;
 }
 
-.answer-box{
-  margin-top:12px;
-  background:#ecfdf3;
-  color:#166534;
-  padding:13px;
+/* =========================
+   文章
+========================= */
+
+.article{
+  background:#fff;
+  border-radius:17px;
+  padding:20px;
+  line-height:1.9;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
+}
+
+.article p{
+  margin:0 0 14px;
+}
+
+.article-title{
+  font-size:21px;
+  font-weight:800;
+  margin-bottom:15px;
+}
+
+/* =========================
+   语法详情
+========================= */
+
+.detail{
+  display:none;
+  margin-top:15px;
+}
+
+.detail.show{
+  display:block;
+}
+
+.box{
+  background:#f6f5ff;
+  border-left:4px solid #6957f5;
+  padding:14px;
+  border-radius:10px;
+  line-height:1.7;
+  margin:12px 0;
+}
+
+.example{
+  background:#fafafa;
+  padding:14px;
   border-radius:10px;
   line-height:1.7;
 }
-.wrong-box{
-  margin-top:12px;
-  background:#fff1f2;
-  color:#9f1239;
+
+/* =========================
+   练习题
+========================= */
+
+.question-box{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
+  margin-top:15px;
+}
+
+.question-number{
+  color:#6957f5;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.question-text{
+  font-size:18px;
+  font-weight:700;
+  line-height:1.65;
+  margin-bottom:15px;
+}
+
+.choice{
+  width:100%;
+  border:2px solid #e8e9ee;
+  background:#fff;
+  border-radius:12px;
+  padding:13px;
+  margin:9px 0;
+  text-align:left;
+  cursor:pointer;
+  font-size:15px;
+  transition:.12s;
+}
+
+.choice:hover{
+  border-color:#aaa0fa;
+  background:#faf9ff;
+}
+
+.choice.selected{
+  border-color:#6957f5;
+  background:#eeeaff;
+  color:#4335b5;
+  font-weight:700;
+}
+
+.choice.correct{
+  border-color:#22a06b;
+  background:#ecfdf3;
+  color:#166534;
+}
+
+.choice.wrong{
+  border-color:#e05252;
+  background:#fff1f1;
+  color:#a52626;
+}
+
+.feedback{
+  display:none;
+  margin-top:15px;
   padding:15px;
   border-radius:12px;
+  line-height:1.7;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.feedback.correct{
+  background:#ecfdf3;
+  color:#166534;
+}
+
+.feedback.wrong{
+  background:#fff1f1;
+  color:#a52626;
+}
+
+.explain-question{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid rgba(0,0,0,.08);
+}
+
+/* =========================
+   模拟考试
+========================= */
+
+.exam-shell{
+  max-width:850px;
+  margin:auto;
+}
+
+.exam-header{
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
+  margin-bottom:15px;
+}
+
+.exam-progress{
+  height:9px;
+  background:#ececf2;
+  border-radius:99px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.exam-progress-bar{
+  height:100%;
+  width:0%;
+  background:#6957f5;
+  transition:.2s;
+}
+
+.exam-meta{
+  display:flex;
+  justify-content:space-between;
+  color:#6b7280;
+  font-size:14px;
+}
+
+.exam-article{
+  background:#fafafa;
+  border-radius:13px;
+  padding:16px;
+  line-height:1.85;
+  margin-bottom:18px;
+}
+
+.exam-article strong{
+  display:block;
+  margin-bottom:8px;
+}
+
+.exam-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.exam-result{
+  display:none;
+  background:white;
+  border-radius:20px;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+
+.exam-result.show{
+  display:block;
+}
+
+.score{
+  font-size:54px;
+  font-weight:900;
+  color:#6957f5;
+}
+
+.result-detail{
+  margin-top:20px;
+  text-align:left;
+}
+
+.result-item{
+  background:#f8f8fb;
+  padding:14px;
+  border-radius:12px;
+  margin:9px 0;
+  line-height:1.65;
+}
+
+.exam-menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.exam-option{
+  border:0;
+  background:white;
+  padding:22px;
+  border-radius:18px;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
+}
+
+.exam-option h3{
+  margin:0 0 8px;
+}
+
+.exam-option p{
+  color:#6b7280;
+  line-height:1.6;
+}
+
+/* =========================
+   写作口语
+========================= */
+
+.prompt{
+  background:white;
+  padding:20px;
+  border-radius:17px;
+  box-shadow:0 3px 15px rgba(0,0,0,.05);
+  margin-top:15px;
+}
+
+.prompt h3{
+  margin-top:0;
+}
+
+.prompt-box{
+  background:#f7f7ff;
+  padding:15px;
+  border-radius:11px;
   line-height:1.8;
 }
 
 textarea{
   width:100%;
-  min-height:190px;
-  border:1px solid #dfe2e8;
+  min-height:220px;
+  margin-top:14px;
+  border:1px solid #dddfe6;
   border-radius:12px;
   padding:14px;
-  font-size:16px;
-  line-height:1.7;
   resize:vertical;
-}
-input{
-  width:100%;
-  padding:12px;
-  border:1px solid #dfe2e8;
-  border-radius:10px;
-  font-size:16px;
+  font-family:inherit;
+  font-size:15px;
 }
 
-.exam-info{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:15px 0;
-}
-.exam-pill{
-  background:#eeeaff;
-  color:#5144c7;
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:800;
-}
-
-.exam-bar{
-  position:sticky;
-  top:65px;
-  z-index:10;
-  background:#fff;
-  padding:12px;
-  border-radius:14px;
-  margin-bottom:15px;
-  box-shadow:0 3px 12px #0001;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-.timer{
-  font-weight:900;
-  color:#dc2626;
-  font-size:19px;
-}
-
-.progress{
-  height:9px;
-  background:#e5e7eb;
-  border-radius:99px;
-  overflow:hidden;
-}
-.progress-bar{
-  height:100%;
-  background:#6657f5;
-  width:0%;
-  transition:.2s;
-}
-
-.score{
-  text-align:center;
-  background:linear-gradient(135deg,#6657f5,#9184ff);
-  color:#fff;
-  border-radius:22px;
-  padding:30px 20px;
-  margin-bottom:18px;
-}
-.score-number{
-  font-size:55px;
-  font-weight:900;
-}
-.score h1{margin:0}
-
-.review-card{
-  background:#fff;
-  border-radius:16px;
-  padding:18px;
-  margin:12px 0;
-  border-left:5px solid #dc2626;
-}
-
-.exam-nav{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:14px 0;
-}
-.exam-num{
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:9px;
-  background:#e5e7eb;
-  cursor:pointer;
-  font-weight:800;
-}
-.exam-num.done{
-  background:#6657f5;
-  color:#fff;
-}
-.exam-num.current{
-  outline:3px solid #b9b2ff;
-}
-
-.notice{
-  background:#fff7ed;
-  border-left:4px solid #f97316;
-  padding:13px;
-  border-radius:9px;
-  line-height:1.7;
-  margin:12px 0;
-}
+/* =========================
+   footer
+========================= */
 
 footer{
   text-align:center;
-  padding:35px;
-  color:#98a2b3;
+  color:#9ca3af;
+  padding:25px;
 }
 
-@media(max-width:850px){
-  .module-grid{grid-template-columns:repeat(2,1fr)}
+/* =========================
+   手机
+========================= */
+
+@media(max-width:700px){
+
+  .home-inner{
+    padding-top:35px;
+  }
+
+  .home h1{
+    font-size:29px;
+  }
+
+  .menu-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .menu-card{
+    min-height:135px;
+    padding:16px;
+  }
+
+  .exam-menu{
+    grid-template-columns:1fr;
+  }
+
+  .top-title{
+    font-size:16px;
+  }
+
 }
-@media(max-width:600px){
-  .container{width:calc(100% - 20px)}
-  .home-hero{padding-top:25px}
-  .home-hero-box{padding:28px 20px}
-  .home-hero h1{font-size:28px}
-  .grid{grid-template-columns:1fr}
-  .module-grid{grid-template-columns:1fr 1fr}
-  .module{min-height:165px}
-  .module-icon{font-size:30px}
-  .module h2{font-size:17px}
-  .module p{font-size:12px}
-  .section-page{padding-top:15px}
-  .exam-bar{top:60px}
+
+@media(max-width:480px){
+
+  .menu-grid{
+    grid-template-columns:1fr;
+  }
+
+  .content{
+    padding:15px 12px 40px;
+  }
+
+  .hero,
+  .card,
+  .article,
+  .question-box{
+    border-radius:14px;
+  }
+
+  .question-text{
+    font-size:17px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ======================================================
+<div class="app">
+
+<!-- =====================================================
      首页
-====================================================== -->
+===================================================== -->
 
-<div id="homePage" class="page active">
+<section id="homePage" class="page active home">
 
-<header class="top">
-  <div class="top-inner">
-    <div>
-      <div class="logo">小T · SIM EPT</div>
-      <div class="top-sub">专属英语冲刺学习站</div>
-    </div>
-  </div>
-</header>
+<div class="home-inner">
 
-<main class="container">
+<div class="logo">T</div>
 
-<section class="home-hero">
-  <div class="home-hero-box">
-    <h1>🎓 SIM EPT 冲刺中心</h1>
-    <p>
-      语法、阅读、听力、写作、口语与完整模拟考试。
-      <br>
-      今天开始，把考试真正做一遍。
-    </p>
-  </div>
-</section>
+<h1>小T · SIM EPT<br>冲刺学习站</h1>
 
-<h2 class="home-title">📚 学习项目</h2>
+<div class="home-sub">
+专门为你的 SIM EPT 考试准备的<br>
+语法、阅读、听力、写作、口语与模拟考试系统
+</div>
 
-<div class="module-grid">
+<div class="home-tip">
+📌 建议使用方式：<br>
+先学习专项知识 → 再做专项练习 → 最后进行模拟考试。
+</div>
 
-<button class="module" onclick="openPage('grammarPage')">
-  <div class="module-icon">📚</div>
-  <h2>语法训练</h2>
-  <p>重点语法、结构、标志词、例句与练习解析。</p>
+<div class="menu-grid">
+
+<button class="menu-card" onclick="openPage('grammarPage')">
+<div class="menu-icon">📚</div>
+<h3>语法专项</h3>
+<p>重点语法、结构、标志词和练习。</p>
 </button>
 
-<button class="module" onclick="openPage('readingPage')">
-  <div class="module-icon">📖</div>
-  <h2>阅读训练</h2>
-  <p>10篇完整文章，配套题目与逐题解析。</p>
+<button class="menu-card" onclick="openPage('readingPage')">
+<div class="menu-icon">📖</div>
+<h3>阅读专项</h3>
+<p>完整文章 + 题目 + 解析。</p>
 </button>
 
-<button class="module" onclick="openPage('listeningPage')">
-  <div class="module-icon">🎧</div>
-  <h2>听力训练</h2>
-  <p>校园、课程、生活场景与关键词训练。</p>
+<button class="menu-card" onclick="openPage('listeningPage')">
+<div class="menu-icon">🎧</div>
+<h3>听力专项</h3>
+<p>关键词、转折、数字、校园场景。</p>
 </button>
 
-<button class="module" onclick="openPage('writingPage')">
-  <div class="module-icon">✍️</div>
-  <h2>写作训练</h2>
-  <p>开头、论证、举例、结尾以及完整写作题。</p>
+<button class="menu-card" onclick="openPage('writingPage')">
+<div class="menu-icon">✍️</div>
+<h3>写作专项</h3>
+<p>开头、论证、举例、结尾和作文训练。</p>
 </button>
 
-<button class="module" onclick="openPage('examPage')">
-  <div class="module-icon">📝</div>
-  <h2>模拟考试</h2>
-  <p>5套轮换题库，语法＋阅读＋口语＋写作。</p>
+<button class="menu-card" onclick="openPage('speakingPage')">
+<div class="menu-icon">🗣️</div>
+<h3>口语专项</h3>
+<p>按照考试要求练习回答。</p>
+</button>
+
+<button class="menu-card" onclick="openPage('examPage')">
+<div class="menu-icon">📝</div>
+<h3>模拟考试</h3>
+<p>5套题库 + 随机模拟 + 一题一题完成。</p>
 </button>
 
 </div>
 
-<div class="card">
-  <h2>🔥 最后冲刺建议</h2>
-  <p>
-    先刷语法和阅读 → 再做模拟考试 → 最后根据错题解析重新复习。
-    模拟考试不要只看分数，重点看自己为什么错。
-  </p>
 </div>
-
-</main>
-
-<footer>小T · SIM EPT 冲刺学习站</footer>
-</div>
-
-
-<!-- ======================================================
-     语法
-====================================================== -->
-
-<div id="grammarPage" class="page">
-
-<header class="top">
-<div class="top-inner">
-<div class="logo">📚 语法训练</div>
-</div>
-</header>
-
-<main class="container section-page">
-
-<button class="back" onclick="goHome()">← 返回首页</button>
-
-<div class="page-head">
-<h1>📚 SIM EPT 语法训练</h1>
-<p>
-重点掌握时态、条件句、从句、非谓语、被动、比较级、主谓一致等高频考点。
-</p>
-</div>
-
-<div id="grammarList" class="grid"></div>
-<div id="grammarDetail"></div>
-
-</main>
-</div>
-
-
-<!-- ======================================================
-     阅读
-====================================================== -->
-
-<div id="readingPage" class="page">
-
-<header class="top">
-<div class="top-inner">
-<div class="logo">📖 阅读训练</div>
-</div>
-</header>
-
-<main class="container section-page">
-
-<button class="back" onclick="goHome()">← 返回首页</button>
-
-<div class="page-head">
-<h1>📖 阅读训练</h1>
-<p>
-10篇完整文章。先读文章，再做题。每道题都提供答案和解析。
-</p>
-</div>
-
-<div id="readingList" class="grid"></div>
-<div id="readingDetail"></div>
-
-</main>
-</div>
-
-
-<!-- ======================================================
-     听力
-====================================================== -->
-
-<div id="listeningPage" class="page">
-
-<header class="top">
-<div class="top-inner">
-<div class="logo">🎧 听力训练</div>
-</div>
-</header>
-
-<main class="container section-page">
-
-<button class="back" onclick="goHome()">← 返回首页</button>
-
-<div class="page-head">
-<h1>🎧 听力训练</h1>
-<p>重点训练关键词、数字、时间、转折、因果和校园生活场景。</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h2>🏫 校园场景</h2>
-<p>
-课程安排、作业、考试、图书馆、学生服务、注册、教授办公室。
-</p>
-<div class="knowledge">
-<b>重点词：</b>
-assignment / deadline / lecture / tutorial /
-registration / office hour
-</div>
-</div>
-
-<div class="card">
-<h2>🏠 生活场景</h2>
-<p>
-住宿、交通、购物、预约、银行、餐厅和服务咨询。
-</p>
-<div class="knowledge">
-<b>重点词：</b>
-appointment / available / payment /
-reservation / transport
-</div>
-</div>
-
-<div class="card">
-<h2>⚠️ 转折陷阱</h2>
-<p>
-听到 but、however、although、actually 时要特别注意。
-</p>
-<div class="knowledge">
-很多题目会先给一个信息，然后用转折改变真正答案。
-</div>
-</div>
-
-<div class="card">
-<h2>🔢 数字和时间</h2>
-<p>
-特别注意日期、价格、时间、百分比和电话号码。
-</p>
-<div class="knowledge">
-例如：15 / 50、13 / 30、Tuesday / Thursday。
-</div>
-</div>
-
-</div>
-
-</main>
-</div>
-
-
-<!-- ======================================================
-     写作
-====================================================== -->
-
-<div id="writingPage" class="page">
-
-<header class="top">
-<div class="top-inner">
-<div class="logo">✍️ 写作训练</div>
-</div>
-</header>
-
-<main class="container section-page">
-
-<button class="back" onclick="goHome()">← 返回首页</button>
-
-<div class="page-head">
-<h1>✍️ 写作训练</h1>
-<p>先掌握句型，再进行完整限时写作。</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h2>① 开头</h2>
-<p>
-Nowadays, ...<br>
-In recent years, ...<br>
-It is widely believed that ...
-</p>
-</div>
-
-<div class="card">
-<h2>② 论证</h2>
-<p>
-One important reason is that ...<br>
-Another factor is that ...<br>
-This is because ...
-</p>
-</div>
-
-<div class="card">
-<h2>③ 举例</h2>
-<p>
-For example, ...<br>
-For instance, ...<br>
-A good example of this is ...
-</p>
-</div>
-
-<div class="card">
-<h2>④ 结尾</h2>
-<p>
-In conclusion, ...<br>
-To sum up, ...<br>
-For these reasons, ...
-</p>
-</div>
-
-</div>
-
-<div class="detail">
-
-<h2>📝 模拟写作题</h2>
-
-<div class="notice">
-<b>建议：</b>先花几分钟列提纲，再开始写。注意段落结构、连接词、语法和拼写。
-</div>
-
-<h3>
-Some people believe that university students should have part-time jobs.
-Do you agree or disagree?
-</h3>
-
-<p>
-Write an essay giving reasons and examples to support your opinion.
-</p>
-
-<p><b>建议长度：</b>约250–300词</p>
-
-<textarea id="writingAnswer"
-placeholder="在这里写你的作文……"></textarea>
-
-<br><br>
-
-<button class="action" onclick="saveWriting()">保存我的作文</button>
-
-<div id="writingSaved" class="answer-box hidden">
-作文已经暂存在本页面。
-</div>
-
-</div>
-
-</main>
-</div>
-
-
-<!-- ======================================================
-     模拟考试
-====================================================== -->
-
-<div id="examPage" class="page">
-
-<header class="top">
-<div class="top-inner">
-<div class="logo">📝 SIM EPT 模拟考试</div>
-</div>
-</header>
-
-<main class="container section-page">
-
-<button class="back" onclick="goHome()">← 返回首页</button>
-
-<div id="examStart">
-
-<div class="page-head">
-<h1>📝 SIM EPT 全套模拟考试</h1>
-
-<p>
-模拟考试包含：
-<b>语法 + 阅读 + 口语 + 写作</b>。
-</p>
-
-<div class="exam-info">
-<span class="exam-pill">5套轮换题库</span>
-<span class="exam-pill">难度：中高</span>
-<span class="exam-pill">完整阅读文章</span>
-<span class="exam-pill">错题解析</span>
-</div>
-
-<div class="notice">
-模拟考试建议一次完成。不要提前看答案。
-提交后会自动统计语法和阅读客观题成绩，并显示所有错题的原题、你的答案、正确答案和解析。
-</div>
-
-<h3>选择模拟套题</h3>
-
-<div class="grid">
-
-<div class="card clickable" onclick="startExam(0)">
-<h2>📝 模拟卷 1</h2>
-<p>大学学习与学生生活主题</p>
-<button class="action">开始第一套</button>
-</div>
-
-<div class="card clickable" onclick="startExam(1)">
-<h2>📝 模拟卷 2</h2>
-<p>教育与社会主题</p>
-<button class="action">开始第二套</button>
-</div>
-
-<div class="card clickable" onclick="startExam(2)">
-<h2>📝 模拟卷 3</h2>
-<p>科技与现代生活主题</p>
-<button class="action">开始第三套</button>
-</div>
-
-<div class="card clickable" onclick="startExam(3)">
-<h2>📝 模拟卷 4</h2>
-<p>环境与城市生活主题</p>
-<button class="action">开始第四套</button>
-</div>
-
-<div class="card clickable" onclick="startExam(4)">
-<h2>📝 模拟卷 5</h2>
-<p>综合大学英语主题</p>
-<button class="action">开始第五套</button>
-</div>
-
-</div>
-</div>
-</div>
-
-
-<div id="examArea" class="hidden">
-
-<div class="exam-bar">
-<div>
-<b id="examSetTitle">模拟卷</b>
-<div id="examPartName">语法</div>
-</div>
-<div class="timer" id="timer">45:00</div>
-</div>
-
-<div class="progress">
-<div class="progress-bar" id="progressBar"></div>
-</div>
-
-<div id="examQuestion"></div>
-
-<div class="exam-nav" id="examNav"></div>
-
-<div style="display:flex;justify-content:space-between;gap:10px">
-<button class="action secondary" onclick="prevExamQuestion()">← 上一题</button>
-<button class="action" onclick="nextExamQuestion()">下一题 →</button>
-</div>
-
-<br>
-
-<button class="action danger" onclick="submitExam()">提交模拟考试</button>
-
-</div>
-
-
-<div id="examResult" class="hidden"></div>
-
-</main>
-</div>
-
 
 <footer>
 小T · SIM EPT 冲刺学习站
 </footer>
 
+</section>
+
+
+<!-- =====================================================
+     语法
+===================================================== -->
+
+<section id="grammarPage" class="page">
+
+<div class="topbar">
+<div class="topbar-inner">
+<button class="back-home" onclick="openPage('homePage')">← 首页</button>
+<div class="top-title">📚 语法专项</div>
+</div>
+</div>
+
+<div class="content">
+
+<div class="hero">
+<h2>📚 SIM EPT 语法专项</h2>
+<p>
+点击一个知识点进入独立学习页面。重点掌握结构、标志词和考试判断方法。
+</p>
+</div>
+
+<div id="grammarGrid" class="grid"></div>
+
+<div id="grammarDetail" class="detail"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     阅读
+===================================================== -->
+
+<section id="readingPage" class="page">
+
+<div class="topbar">
+<div class="topbar-inner">
+<button class="back-home" onclick="openPage('homePage')">← 首页</button>
+<div class="top-title">📖 阅读专项</div>
+</div>
+</div>
+
+<div class="content">
+
+<div class="hero">
+<h2>📖 SIM EPT 阅读专项</h2>
+<p>
+这里不是只有题目。进入文章后会先看到完整阅读材料，再开始5道题。
+</p>
+</div>
+
+<div id="readingGrid" class="grid"></div>
+
+<div id="readingDetail" class="detail"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     听力
+===================================================== -->
+
+<section id="listeningPage" class="page">
+
+<div class="topbar">
+<div class="topbar-inner">
+<button class="back-home" onclick="openPage('homePage')">← 首页</button>
+<div class="top-title">🎧 听力专项</div>
+</div>
+</div>
+
+<div class="content">
+
+<div class="hero">
+<h2>🎧 听力专项</h2>
+<p>
+SIM EPT 听力重点训练：关键词、数字、时间、转折、因果、态度以及校园生活场景。
+</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<span class="tag">场景</span>
+<h3>校园生活</h3>
+<p>
+课程、作业、考试、图书馆、注册、老师咨询。
+</p>
+</div>
+
+<div class="card">
+<span class="tag">场景</span>
+<h3>生活服务</h3>
+<p>
+交通、住宿、购物、预约、银行和服务咨询。
+</p>
+</div>
+
+<div class="card">
+<span class="tag">重点</span>
+<h3>转折词</h3>
+<p>
+特别注意 but、however、although、actually、instead。
+</p>
+</div>
+
+<div class="card">
+<span class="tag">重点</span>
+<h3>数字时间</h3>
+<p>
+日期、价格、人数、时间、地点变化是高频考点。
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     写作
+===================================================== -->
+
+<section id="writingPage" class="page">
+
+<div class="topbar">
+<div class="topbar-inner">
+<button class="back-home" onclick="openPage('homePage')">← 首页</button>
+<div class="top-title">✍️ 写作专项</div>
+</div>
+</div>
+
+<div class="content">
+
+<div class="hero">
+<h2>✍️ 写作专项</h2>
+<p>
+重点训练观点表达、原因、例子、让步和总结。
+</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>开头</h3>
+<p>
+Nowadays, ...<br>
+It is widely believed that ...<br>
+There is no doubt that ...
+</p>
+</div>
+
+<div class="card">
+<h3>表达观点</h3>
+<p>
+In my opinion, ...<br>
+I believe that ...<br>
+From my perspective, ...
+</p>
+</div>
+
+<div class="card">
+<h3>论证</h3>
+<p>
+One important reason is that ...<br>
+Another reason is that ...
+</p>
+</div>
+
+<div class="card">
+<h3>举例</h3>
+<p>
+For example, ...<br>
+For instance, ...
+</p>
+</div>
+
+<div class="card">
+<h3>让步</h3>
+<p>
+Although ...<br>
+However, ...<br>
+On the other hand, ...
+</p>
+</div>
+
+<div class="card">
+<h3>结尾</h3>
+<p>
+In conclusion, ...<br>
+To sum up, ...
+</p>
+</div>
+
+</div>
+
+<div class="prompt">
+<h3>📝 写作模拟题</h3>
+
+<div class="prompt-box">
+Some people believe that university students should spend more time
+participating in practical activities rather than focusing only on academic study.
+Do you agree or disagree?
+
+请表达你的观点，并使用至少两个理由支持你的答案。
+</div>
+
+<textarea placeholder="在这里练习写作……"></textarea>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     口语
+===================================================== -->
+
+<section id="speakingPage" class="page">
+
+<div class="topbar">
+<div class="topbar-inner">
+<button class="back-home" onclick="openPage('homePage')">← 首页</button>
+<div class="top-title">🗣️ 口语专项</div>
+</div>
+</div>
+
+<div class="content">
+
+<div class="hero">
+<h2>🗣️ 口语专项</h2>
+
+<p>
+按照你之前说的考试形式训练：看到问题后，直接开口回答。
+</p>
+
+</div>
+
+<div class="prompt">
+
+<h3>Speaking Question 1</h3>
+
+<div class="prompt-box">
+Tell me about your university life.
+What do you enjoy most about studying at university?
+</div>
+
+<p>
+建议回答：30–60秒
+</p>
+
+<button class="action" onclick="nextSpeaking()">
+下一道 →
+</button>
+
+</div>
+
+<div id="speakingQuestion" class="prompt" style="display:none">
+
+<h3>Speaking Question 2</h3>
+
+<div class="prompt-box">
+Do you think university students should have a part-time job?
+Why or why not?
+</div>
+
+<p>
+建议回答：45–60秒
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     模拟考试入口
+===================================================== -->
+
+<section id="examPage" class="page">
+
+<div class="topbar">
+<div class="topbar-inner">
+<button class="back-home" onclick="openPage('homePage')">← 首页</button>
+<div class="top-title">📝 模拟考试</div>
+</div>
+</div>
+
+<div class="content">
+
+<div class="hero">
+
+<h2>📝 SIM EPT 模拟考试</h2>
+
+<p>
+模拟考试采用一题一题的方式完成。<br>
+每次进入可以选择固定题库，也可以随机生成模拟题。
+</p>
+
+</div>
+
+<div class="exam-menu">
+
+<button class="exam-option" onclick="startExam(0)">
+<h3>📘 模拟卷 1</h3>
+<p>语法 + 阅读</p>
+</button>
+
+<button class="exam-option" onclick="startExam(1)">
+<h3>📗 模拟卷 2</h3>
+<p>语法 + 阅读</p>
+</button>
+
+<button class="exam-option" onclick="startExam(2)">
+<h3>📙 模拟卷 3</h3>
+<p>语法 + 阅读</p>
+</button>
+
+<button class="exam-option" onclick="startExam(3)">
+<h3>📕 模拟卷 4</h3>
+<p>语法 + 阅读</p>
+</button>
+
+<button class="exam-option" onclick="startExam(4)">
+<h3>📓 模拟卷 5</h3>
+<p>语法 + 阅读</p>
+</button>
+
+<button class="exam-option" onclick="startRandomExam()">
+<h3>🎲 随机模拟</h3>
+<p>从全部题库随机抽取</p>
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     正式模拟考试页面
+===================================================== -->
+
+<section id="examDoingPage" class="page">
+
+<div class="topbar">
+<div class="topbar-inner">
+
+<button class="back-home" onclick="leaveExam()">
+← 退出模拟
+</button>
+
+<div class="top-title">
+📝 模拟考试
+</div>
+
+</div>
+</div>
+
+<div class="content">
+
+<div class="exam-shell">
+
+<div class="exam-header">
+
+<div class="exam-meta">
+
+<span id="examType">语法</span>
+
+<span>
+第 <b id="examCurrent">1</b> /
+<span id="examTotal">10</span> 题
+</span>
+
+</div>
+
+<div class="exam-progress">
+<div
+id="examProgressBar"
+class="exam-progress-bar">
+</div>
+</div>
+
+</div>
+
+
+<div id="examQuestionArea"></div>
+
+<div
+id="examResult"
+class="exam-result">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
 
 <script>
 
-/* =========================================================
-   页面系统
-========================================================= */
-
-const pages=[
-  "homePage",
-  "grammarPage",
-  "readingPage",
-  "listeningPage",
-  "writingPage",
-  "examPage"
-];
+/* =====================================================
+   页面切换
+===================================================== */
 
 function openPage(id){
 
-  pages.forEach(function(p){
-    const el=document.getElementById(p);
-    if(el) el.classList.remove("active");
+  document.querySelectorAll(".page").forEach(function(page){
+    page.classList.remove("active");
   });
 
-  const target=document.getElementById(id);
+  var page=document.getElementById(id);
 
-  if(target){
-    target.classList.add("active");
+  if(page){
+    page.classList.add("active");
   }
 
-  window.scrollTo(0,0);
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
 
-function goHome(){
-  openPage("homePage");
-}
 
-
-/* =========================================================
-   语法数据库
-========================================================= */
+/* =====================================================
+   语法题库
+===================================================== */
 
 const grammarData=[
 
 {
 title:"一般现在时",
-structure:"主语 + 动词原形；第三人称单数 + s/es",
-words:"usually / often / always / every day",
+structure:"主语 + 动词原形；第三人称单数通常加 -s / -es。",
+words:"usually, often, always, every day, generally",
 example:"She usually studies English after dinner.",
-q:"The university library ___ at 9 every morning.",
+q:"The university library usually ___ at 8 a.m.",
 options:["open","opens","opened","opening"],
-answer:1,
-explain:"every morning 表示规律性动作；the university library 是第三人称单数，所以用 opens。"
+answer:"B",
+explain:"usually 表示经常性、习惯性动作。主语 the university library 是第三人称单数，所以使用 opens。"
 },
 
 {
 title:"一般过去时",
-structure:"主语 + 动词过去式",
-words:"yesterday / last week / ago / in 2025",
-example:"I visited the library yesterday.",
-q:"The professor ___ the students last Monday.",
-options:["meets","meet","met","meeting"],
-answer:2,
-explain:"last Monday 是明确的过去时间，因此使用一般过去时 met。"
+structure:"主语 + 动词过去式。",
+words:"yesterday, last week, ago, in 2025",
+example:"I visited Singapore last year.",
+q:"The student ___ the report yesterday.",
+options:["submit","submits","submitted","submitting"],
+answer:"C",
+explain:"yesterday 是明确的过去时间标志，因此使用一般过去时 submitted。"
+},
+
+{
+title:"一般将来时",
+structure:"will + 动词原形。",
+words:"tomorrow, next week, soon, in the future",
+example:"I will finish the report tomorrow.",
+q:"The results ___ be announced next week.",
+options:["will","were","have","are"],
+answer:"A",
+explain:"next week 表示将来，主句使用 will + 动词原形。"
 },
 
 {
 title:"现在进行时",
-structure:"am / is / are + doing",
-words:"now / right now / at the moment",
-example:"The students are discussing the problem now.",
-q:"Please be quiet. The students ___.",
+structure:"am / is / are + doing。",
+words:"now, right now, at the moment, Look!",
+example:"They are studying now.",
+q:"Look! The students ___.",
 options:["study","studied","are studying","have studied"],
-answer:2,
-explain:"Please be quiet 表明动作正在发生，因此使用现在进行时 are studying。"
+answer:"C",
+explain:"Look! 表示动作正在发生，所以使用现在进行时 are studying。"
+},
+
+{
+title:"过去进行时",
+structure:"was / were + doing。",
+words:"while, when, at 8 p.m. yesterday",
+example:"I was reading when he called.",
+q:"At 9 p.m. yesterday, I ___ for my exam.",
+options:["study","studied","was studying","have studied"],
+answer:"C",
+explain:"过去某个具体时间正在进行的动作使用过去进行时。"
 },
 
 {
 title:"现在完成时",
-structure:"have / has + 过去分词",
-words:"already / yet / ever / never / since / for",
-example:"She has studied English for three years.",
-q:"He ___ never ___ this kind of problem before.",
+structure:"have / has + 过去分词。",
+words:"already, yet, ever, never, just, since, for",
+example:"She has lived here for three years.",
+q:"The student ___ already ___ the assignment.",
 options:[
-"has / faced",
-"did / face",
-"is / facing",
-"was / face"
+"has / completed",
+"did / complete",
+"is / completing",
+"was / completed"
 ],
-answer:0,
-explain:"never 与 before 表示截至现在的经历，因此使用现在完成时 has faced。"
+answer:"A",
+explain:"already 常与现在完成时搭配。student 是单数，因此使用 has completed。"
 },
 
 {
 title:"过去完成时",
-structure:"had + 过去分词",
-words:"before / after / by the time",
-example:"The lecture had started before we arrived.",
-q:"By the time we arrived, the lecture ___.",
-options:["starts","has started","had started","was starting"],
-answer:2,
-explain:"arrived 是过去时间点，而 lecture 在到达之前已经开始，所以用过去完成时。"
+structure:"had + 过去分词。",
+words:"before, after, by the time, already",
+example:"The train had left before we arrived.",
+q:"By the time the teacher arrived, the students ___ the test.",
+options:[
+"finish",
+"have finished",
+"had finished",
+"were finishing"
+],
+answer:"C",
+explain:"老师到达是过去时间点，而考试已经在此之前完成，所以使用过去完成时 had finished。"
 },
 
 {
 title:"主将从现",
-structure:"If/When/Before/After + 一般现在时，主句可用 will",
-words:"if / when / unless / as soon as",
-example:"If it rains tomorrow, we will stay home.",
-q:"If the weather ___ better tomorrow, we will go out.",
-options:["will be","is","was","has been"],
-answer:1,
-explain:"if 条件从句表示将来时，通常不用 will，而使用一般现在时 is。"
+structure:"If / When / Before / After + 一般现在时，主句通常使用 will。",
+words:"if, when, before, after, as soon as, unless",
+example:"If it rains tomorrow, I will stay home.",
+q:"If the weather ___ good tomorrow, we will go to the campus.",
+options:[
+"will be",
+"is",
+"was",
+"would be"
+],
+answer:"B",
+explain:"if 条件从句表示将来时，通常不能使用 will，而使用一般现在时 is。"
 },
 
 {
 title:"虚拟条件句",
-structure:"If + 过去式，would + 动词原形",
-words:"if / were / would",
+structure:"与现在事实相反：If + 过去式，would + 动词原形。",
+words:"if, were, would, could",
 example:"If I were you, I would study harder.",
-q:"If she ___ more confident, she would speak English more often.",
-options:["is","was","were","has been"],
-answer:2,
-explain:"这是与现在事实相反的假设。正式英语中 be 的虚拟形式通常使用 were。"
+q:"If I ___ more time, I would join the university club.",
+options:[
+"have",
+"had",
+"will have",
+"am having"
+],
+answer:"B",
+explain:"would + 动词原形表示与现在事实相反，if 从句使用过去式 had。"
 },
 
 {
 title:"情态动词",
-structure:"can/could/may/might/must/should + 动词原形",
-words:"must / should / can / may / might",
-example:"Students should submit their assignments on time.",
-q:"Students ___ submit the form before Friday.",
-options:["must to","must","musts","are must"],
-answer:1,
-explain:"情态动词 must 后面直接接动词原形 submit。"
+structure:"can / could / may / might / must / should + 动词原形。",
+words:"can, could, may, might, must, should",
+example:"Students should arrive on time.",
+q:"Students should ___ their assignments before Friday.",
+options:[
+"submit",
+"submits",
+"submitted",
+"submitting"
+],
+answer:"A",
+explain:"情态动词 should 后面必须接动词原形。"
 },
 
 {
 title:"被动语态",
-structure:"be + 过去分词",
-words:"by / be + done",
-example:"The report was written by the student.",
-q:"The final report ___ by all group members.",
-options:["must check","must be checked","must checked","must checking"],
-answer:1,
-explain:"report 是被检查的对象，因此需要被动语态 must be checked。"
+structure:"be + 过去分词。",
+words:"by, be + done",
+example:"The report was written by John.",
+q:"English ___ in many countries.",
+options:[
+"speaks",
+"is spoken",
+"speaking",
+"has spoken"
+],
+answer:"B",
+explain:"English 是 speak 动作的承受者，所以使用被动语态 is spoken。"
 },
 
 {
 title:"主谓一致",
-structure:"谓语动词必须与主语的人称和数一致",
-words:"everyone / each / every / neither",
+structure:"主语和谓语在人称和数上保持一致。",
+words:"everyone, each, every, neither, either",
 example:"Everyone is responsible for the result.",
-q:"Each of the students ___ required to submit a report.",
-options:["are","were","is","have"],
-answer:2,
-explain:"Each of + 复数名词，谓语仍然使用单数形式 is。"
+q:"Everyone in the class ___ required to submit the form.",
+options:[
+"are",
+"is",
+"were",
+"be"
+],
+answer:"B",
+explain:"everyone 虽然表示很多人，但语法上属于单数，所以使用 is。"
 },
 
 {
 title:"定语从句",
-structure:"先行词 + who/which/that + 从句",
-words:"who / which / that / whose / where",
+structure:"先行词 + who / which / that + 从句。",
+words:"who, which, that, whose, where",
 example:"The student who won the prize is my friend.",
-q:"The course ___ I took last semester was very useful.",
-options:["who","where","which","what"],
-answer:2,
-explain:"course 是物，因此关系代词可以使用 which。"
+q:"The professor ___ teaches this course has many years of experience.",
+options:[
+"which",
+"who",
+"where",
+"what"
+],
+answer:"B",
+explain:"professor 指人，因此使用关系代词 who。"
 },
 
 {
 title:"宾语从句",
-structure:"主句 + 引导词 + 陈述语序",
-words:"that / whether / if / what / why / how",
-example:"I don't know where he lives.",
-q:"The teacher asked me ___ I had completed the assignment.",
-options:["did","whether","was","do"],
-answer:1,
-explain:"asked 后面是宾语从句，whether 表示“是否”，并且使用陈述语序。"
+structure:"主句 + 引导词 + 陈述语序。",
+words:"that, whether, if, what, why, how",
+example:"I know where he lives.",
+q:"I am not sure ___ the meeting will start.",
+options:[
+"when will",
+"when",
+"when does",
+"does when"
+],
+answer:"B",
+explain:"宾语从句必须使用陈述语序，因此正确形式是 when the meeting will start。"
 },
 
 {
 title:"非谓语动词",
-structure:"to do / doing / done",
-words:"want to do / enjoy doing / interested in doing",
-example:"She enjoys reading academic articles.",
+structure:"to do / doing / done。",
+words:"want to do, enjoy doing, avoid doing",
+example:"I enjoy reading English articles.",
 q:"Many students avoid ___ their assignments until the last minute.",
-options:["finish","to finish","finishing","finished"],
-answer:2,
-explain:"avoid 后面必须接动名词 doing，因此是 avoiding/finishing。"
+options:[
+"finish",
+"to finish",
+"finishing",
+"finished"
+],
+answer:"C",
+explain:"avoid 后面通常接动名词 doing，因此使用 finishing。"
 },
 
 {
 title:"比较级",
-structure:"-er / more + 形容词 + than",
-words:"than / much / far / even",
-example:"This method is more effective than the old one.",
-q:"Online learning can be ___ than traditional learning for some students.",
-options:["flexible","more flexible","most flexible","flexibly"],
-answer:1,
-explain:"than 表示比较，flexible 是较长形容词，因此使用 more flexible。"
-},
-
-{
-title:"连接词与逻辑",
-structure:"however 表转折；therefore 表结果；because 表原因",
-words:"however / therefore / although / because",
-example:"The course is difficult; however, it is useful.",
-q:"The exam was difficult. ___, most students passed.",
-options:["Therefore","However","Because","Although"],
-answer:1,
-explain:"前句说考试困难，后句说多数学生通过，存在转折关系，因此用 However。"
+structure:"形容词比较级 + than。",
+words:"than, much, far, even",
+example:"This course is more useful than that one.",
+q:"The second question is much ___ than the first one.",
+options:[
+"difficult",
+"more difficult",
+"most difficult",
+"difficulty"
+],
+answer:"B",
+explain:"than 表示比较，而且 difficult 是较长形容词，因此使用 more difficult。"
 }
 
 ];
 
 
-/* =========================================================
-   阅读数据库
-========================================================= */
+/* =====================================================
+   阅读题库
+===================================================== */
 
 const readingData=[
 
 {
-title:"1. University Library Services",
-article:
-"University libraries have changed considerably in recent years. In the past, students mainly visited libraries to borrow printed books or find a quiet place to study. Today, many university libraries provide a much wider range of services. Students may use electronic databases, computer facilities, group discussion rooms and academic skills workshops. Some libraries also provide individual assistance for students who need help with research or academic writing. However, the availability of these services does not mean that students can use them without responsibility. Libraries still expect students to respect quiet study areas, return materials on time and use shared equipment carefully. In this way, the library can remain useful to a large number of students.",
+title:"University Students and Time Management",
+
+article:"University students often have to balance lectures, assignments, examinations, social activities and personal responsibilities. For this reason, time management is an important skill. Students who plan their week in advance are often better able to identify which tasks are urgent and which can wait. A simple timetable can also reduce the stress caused by approaching deadlines. However, planning alone is not enough. Students must also follow their plans and make adjustments when unexpected situations occur. Effective time management is therefore not about filling every minute with work. Instead, it is about using available time in a thoughtful way and leaving enough space for rest.",
+
 questions:[
-["What is the main idea of the passage?",["Libraries are no longer useful.","University libraries now provide a wider range of services.","Students should only use printed books.","Libraries are mainly for teachers."],1,"文章主要介绍现代大学图书馆除了传统借书功能之外，还提供多种学习和研究服务。"],
-["Which service is mentioned?",["Driving lessons","Academic skills workshops","Cooking classes","Sports training"],1,"文章明确提到 academic skills workshops。"],
-["Why must students use library facilities responsibly?",["Because resources are shared by many students.","Because books are free.","Because teachers require students to work there.","Because libraries are always crowded."],0,"图书馆的设施和资源由许多学生共同使用，所以需要负责任地使用。"],
-["What can students receive help with?",["Academic writing and research","Driving","Cooking","Accommodation"],0,"文章提到 students can receive help with research or academic writing。"],
-["The word 'considerably' is closest in meaning to:",["slightly","greatly","rarely","secretly"],1,"considerably 表示“相当大地、明显地”。"]
+
+{
+q:"What is the main idea of the passage?",
+options:[
+"University students should study every minute.",
+"Time management can help students balance different responsibilities.",
+"Students should avoid social activities.",
+"Planning is unnecessary at university."
+],
+answer:"B",
+explain:"文章主要讨论大学生如何通过时间管理平衡学习、生活和其他责任。"
+},
+
+{
+q:"Why is a timetable useful?",
+options:[
+"It guarantees perfect grades.",
+"It helps students identify urgent tasks.",
+"It removes all deadlines.",
+"It replaces university classes."
+],
+answer:"B",
+explain:"文章明确指出 timetable 可以帮助学生判断哪些任务紧急。"
+},
+
+{
+q:"What does the writer say about planning?",
+options:[
+"Planning alone is always enough.",
+"Planning should never change.",
+"Students also need to follow and adjust their plans.",
+"Students should plan every minute."
+],
+answer:"C",
+explain:"文章指出仅仅制定计划是不够的，还需要执行，并根据突发情况调整。"
+},
+
+{
+q:"What does 'unexpected' most nearly mean?",
+options:[
+"Unplanned",
+"Expensive",
+"Regular",
+"Simple"
+],
+answer:"A",
+explain:"unexpected 表示没有预料到的，即 unplanned。"
+},
+
+{
+q:"According to the passage, effective time management should include:",
+options:[
+"No rest",
+"Only academic work",
+"Thoughtful use of time and enough rest",
+"Working continuously"
+],
+answer:"C",
+explain:"文章最后强调合理利用时间，同时留出足够的休息时间。"
+}
+
 ]
 },
 
 {
-title:"2. Part-time Employment",
-article:
-"Part-time employment is common among university students. Some students work because they need additional money, while others want to gain practical experience before graduation. A part-time job can help students develop communication, teamwork and customer-service skills. Nevertheless, working while studying can create challenges. Students who work too many hours may have less time for lectures, assignments and rest. The effect of a part-time job therefore depends partly on how well students manage their schedules. A reasonable number of working hours may provide useful experience without seriously affecting academic performance.",
+title:"The Role of Technology in Education",
+
+article:"Technology has changed the way students access information. Online databases, educational videos and digital learning platforms allow students to find materials quickly and study beyond the classroom. However, access to more information does not automatically lead to better learning. Students still need to evaluate whether online sources are reliable and relevant. They also need to avoid distractions, especially when studying on devices that provide access to social media and entertainment. Technology can therefore be a powerful educational tool, but its value depends largely on how responsibly and effectively students use it.",
+
 questions:[
-["Why do some students take part-time jobs?",["Only to avoid studying","To earn money or gain experience","To replace university","To travel"],1,"文章给出两个原因：赚钱以及获得实际工作经验。"],
-["Which skill may students develop?",["Customer service","Swimming","Driving","Cooking"],0,"文章明确提到 customer-service skills。"],
-["What may happen if students work too many hours?",["They have more time to study.","They may have less time for academic work.","They automatically get better grades.","They never feel tired."],1,"工作时间过长会减少学习、作业和休息的时间。"],
-["What does the writer suggest?",["Students should never work.","Students should work full-time.","Working hours should be managed carefully.","Students should leave university."],2,"作者强调合理安排工作时间。"],
-["The word 'reasonable' is closest in meaning to:",["suitable","extreme","unnecessary","impossible"],0,"reasonable 在这里表示合理的、适当的。"]
+
+{
+q:"What is one benefit of technology mentioned in the passage?",
+options:[
+"It eliminates the need for teachers.",
+"It allows students to access information quickly.",
+"It guarantees better grades.",
+"It prevents distractions."
+],
+answer:"B",
+explain:"文章指出在线数据库、教育视频等可以帮助学生快速获得学习材料。"
+},
+
+{
+q:"Why does more information not automatically mean better learning?",
+options:[
+"Students still need to evaluate information.",
+"Information is always incorrect.",
+"Technology is too expensive.",
+"Students cannot use computers."
+],
+answer:"A",
+explain:"学生需要判断网络信息是否可靠、是否与学习内容相关。"
+},
+
+{
+q:"What is one problem with studying on digital devices?",
+options:[
+"Students may become distracted.",
+"Students cannot find information.",
+"Students have no access to videos.",
+"Devices cannot display text."
+],
+answer:"A",
+explain:"设备同时可以访问社交媒体和娱乐内容，因此可能造成分心。"
+},
+
+{
+q:"What does 'relevant' mean?",
+options:[
+"Related to the subject",
+"Expensive",
+"Old-fashioned",
+"Popular"
+],
+answer:"A",
+explain:"relevant 表示与主题或问题有关。"
+},
+
+{
+q:"What is the writer's overall attitude toward technology?",
+options:[
+"Completely negative",
+"Completely positive",
+"Technology is useful when used responsibly.",
+"Technology should never be used."
+],
+answer:"C",
+explain:"作者既指出技术的优势，也指出风险，最终认为正确使用才是关键。"
+}
+
 ]
 },
 
 {
-title:"3. Online Learning",
-article:
-"Online learning has become increasingly common in higher education. One major advantage is flexibility. Students can often access lectures and learning materials at different times and from different locations. This can be particularly helpful for students who have jobs or other responsibilities. However, flexibility also creates a need for self-discipline. Students who do not organize their time carefully may postpone assignments or fall behind. Successful online learners therefore tend to set clear goals, create regular study schedules and communicate with instructors when they encounter difficulties.",
+title:"Part-time Work and University Study",
+
+article:"Part-time employment is common among university students. Some students work because they need additional income, while others want to gain practical experience before graduation. A part-time job can develop communication, teamwork and customer-service skills that may not be fully developed through academic study alone. Nevertheless, working too many hours can have negative consequences. Students may have less time to attend lectures, complete assignments or sleep. The most important issue is therefore not whether students should work, but whether they can maintain a reasonable balance between employment and study.",
+
 questions:[
-["What is one major advantage of online learning?",["Flexibility","No assignments","No teachers","Guaranteed high grades"],0,"文章明确指出 flexibility 是线上学习的重要优势。"],
-["Why can flexibility be useful?",["Students may have jobs or other responsibilities.","Students never need to study.","Students can avoid exams.","Students do not need schedules."],0,"有工作或其他责任的学生尤其可以从灵活性中受益。"],
-["What problem may occur without good time management?",["Students may postpone assignments.","Students finish everything early.","Students need no teachers.","Students automatically pass."],0,"文章指出时间管理不好可能导致拖延作业和落后。"],
-["What do successful online learners do?",["Avoid instructors","Set goals and study schedules","Never communicate","Study only once a week"],1,"文章最后列出成功学习者的几个特点。"],
-["What is the best title?",["Online Learning: Benefits and Challenges","The History of Universities","Why Teachers Disappear","How to Buy a Computer"],0,"全文同时讨论线上学习的优势和挑战。"]
+
+{
+q:"Why do some students take part-time jobs?",
+options:[
+"Only to avoid studying.",
+"To earn money or gain experience.",
+"To replace university.",
+"To avoid social interaction."
+],
+answer:"B",
+explain:"文章指出学生兼职主要是为了额外收入或者获得实践经验。"
+},
+
+{
+q:"Which skill is mentioned?",
+options:[
+"Customer service",
+"Driving",
+"Cooking",
+"Programming"
+],
+answer:"A",
+explain:"文章明确提到 customer-service skills。"
+},
+
+{
+q:"What may happen if students work too many hours?",
+options:[
+"They may have less time for study and sleep.",
+"They automatically get better grades.",
+"They have more free time.",
+"They become better at every subject."
+],
+answer:"A",
+explain:"工作时间过多会减少上课、作业和睡眠的时间。"
+},
+
+{
+q:"What does 'consequences' mean?",
+options:[
+"Results",
+"Rules",
+"Opportunities",
+"Schedules"
+],
+answer:"A",
+explain:"negative consequences 指负面结果。"
+},
+
+{
+q:"What is the key issue according to the writer?",
+options:[
+"Whether students should never work.",
+"Whether students can balance work and study.",
+"Whether students should work full-time.",
+"Whether universities should cancel exams."
+],
+answer:"B",
+explain:"文章最后明确强调关键是学生能否平衡工作和学习。"
+}
+
 ]
 },
 
 {
-title:"4. Public Transport",
-article:
-"Public transportation plays an important role in large cities. Buses, trains and other forms of public transport can move large numbers of passengers without requiring every person to use a private car. As a result, an effective public transport system can help reduce traffic congestion and, in some cases, air pollution. However, people are more likely to use public transport when the service is convenient and reliable. Long waiting times, frequent delays or inconvenient routes may encourage passengers to drive instead. City planners therefore need to consider not only the number of vehicles available but also the quality of the service.",
+title:"Public Transport in Modern Cities",
+
+article:"As cities become more crowded, public transport plays an increasingly important role. Buses, trains and other forms of shared transport can move large numbers of people without requiring each person to use a private vehicle. This may help reduce traffic congestion and pollution. However, people are more likely to use public transport when it is convenient and reliable. Long waiting times, frequent delays and complicated routes can discourage passengers. Improving public transport therefore requires more than simply adding vehicles. Cities also need to consider routes, schedules, prices and the overall experience of passengers.",
+
 questions:[
-["What is one benefit of public transportation?",["It can move many passengers.","It removes all roads.","It makes cars free.","It guarantees no pollution."],0,"公共交通能够一次运输大量乘客。"],
-["What may effective public transport reduce?",["Traffic congestion","University fees","Homework","Rain"],0,"文章提到交通拥堵，并指出在某些情况下还可以减少空气污染。"],
-["What may cause people to drive instead?",["Frequent delays","Convenient routes","Reliable service","Short waiting times"],0,"频繁延误可能让乘客选择开车。"],
-["What should city planners consider?",["Only the number of buses","The quality of service as well as vehicles","Only ticket prices","Only private cars"],1,"文章最后强调车辆数量和服务质量都重要。"],
-["'Reliable' most nearly means:",["dependable","expensive","crowded","slow"],0,"reliable 表示可靠的。"]
+
+{
+q:"Why is public transport important in crowded cities?",
+options:[
+"It can move many people efficiently.",
+"It eliminates all traffic.",
+"It makes private cars cheaper.",
+"It removes the need for roads."
+],
+answer:"A",
+explain:"公共交通可以在不要求每个人都使用私家车的情况下运输大量乘客。"
+},
+
+{
+q:"What may public transport help reduce?",
+options:[
+"Traffic congestion and pollution",
+"University tuition",
+"Homework",
+"Food prices"
+],
+answer:"A",
+explain:"文章指出公共交通可能帮助减少交通拥堵和污染。"
+},
+
+{
+q:"What can discourage passengers?",
+options:[
+"Convenient routes",
+"Frequent delays",
+"Reasonable prices",
+"Short waiting times"
+],
+answer:"B",
+explain:"frequent delays 会让乘客不愿意使用公共交通。"
+},
+
+{
+q:"What does 'reliable' most nearly mean?",
+options:[
+"Dependable",
+"Expensive",
+"Popular",
+"Modern"
+],
+answer:"A",
+explain:"reliable 表示可靠的、值得信赖的。"
+},
+
+{
+q:"What should cities consider?",
+options:[
+"Only the number of vehicles",
+"Routes, schedules, prices and passenger experience",
+"Only ticket prices",
+"Only the number of passengers"
+],
+answer:"B",
+explain:"文章最后列出了 routes、schedules、prices 和 passenger experience。"
+}
+
 ]
 },
 
 {
-title:"5. Sleep and Academic Performance",
-article:
-"Sleep is closely connected with students' ability to learn effectively. When students do not get enough sleep, they may experience difficulties with concentration, memory and decision-making. Although some students believe that studying late into the night gives them more time to prepare, sleep deprivation can reduce the effectiveness of that study time. A regular sleep schedule is generally more useful than repeatedly staying awake until very late. Students can also improve their sleep habits by reducing screen use before bedtime and creating a quiet sleeping environment.",
+title:"Sleep and Academic Performance",
+
+article:"Adequate sleep is often overlooked by students who are under pressure to complete assignments or prepare for examinations. However, sleep plays an important role in concentration, memory and general well-being. Students who regularly sleep too little may find it difficult to focus during lectures or remember information they studied the previous day. Although staying up late can create the feeling that more work is being completed, the loss of sleep may reduce the effectiveness of that work. Developing a consistent sleep schedule is therefore an important part of maintaining both academic performance and personal health.",
+
 questions:[
-["What is sleep connected with?",["Learning effectively","Buying books","Transportation","Part-time jobs"],0,"文章说明睡眠与学习能力密切相关。"],
-["What may lack of sleep affect?",["Concentration and memory","Only appetite","Only transportation","Library hours"],0,"文章列出了 concentration、memory 和 decision-making。"],
-["Why can studying late at night be ineffective?",["Sleep deprivation may reduce study effectiveness.","It always makes students smarter.","It removes assignments.","It improves memory automatically."],0,"睡眠不足可能降低学习时间本身的效果。"],
-["What is recommended?",["A regular sleep schedule","Staying awake every night","More screen use","No sleeping routine"],0,"文章建议保持规律睡眠。"],
-["What can improve sleep habits?",["Reducing screen use before bed","Using brighter screens","Studying all night","Drinking more coffee at midnight"],0,"文章明确提出睡前减少屏幕使用。"]
-]
+
+{
+q:"What is the main point?",
+options:[
+"Sleep is unrelated to academic performance.",
+"Students should study all night.",
+"Enough sleep supports concentration, memory and well-being.",
+"Examinations should be cancelled."
+],
+answer:"C",
+explain:"全文主要强调充足睡眠对注意力、记忆和整体健康的重要作用。"
 },
 
 {
-title:"6. Group Projects",
-article:
-"Group projects are widely used in universities because they allow students to work toward a common goal. In addition to helping students understand course content, group work can develop communication, cooperation and problem-solving skills. Nevertheless, group projects are not always easy. Members may have different schedules, different expectations or different levels of commitment. One student may end up doing much more work than another. Clear responsibilities and regular communication can reduce these problems. When disagreements occur, discussing the issue early is usually more effective than waiting until the final deadline.",
-questions:[
-["Why are group projects used?",["To develop teamwork and achieve a shared goal","To eliminate deadlines","To avoid communication","To replace all classes"],0,"文章指出小组项目让学生共同完成目标，同时培养合作技能。"],
-["Which skill is mentioned?",["Problem-solving","Driving","Cooking","Swimming"],0,"problem-solving skills 是文章明确提到的技能。"],
-["What can make group projects difficult?",["Different schedules and commitment","Too many classrooms","Free textbooks","Short lectures"],0,"文章列举了时间安排、期望和投入程度不同等问题。"],
-["How can problems be reduced?",["Clear responsibilities and communication","Ignoring problems","Waiting until the deadline","Letting one student do everything"],0,"清晰分工和及时沟通能够减少问题。"],
-["What should students do when disagreements occur?",["Discuss them early","Ignore them","Wait until graduation","Stop communicating"],0,"文章建议尽早讨论问题。"]
-]
+q:"What may students experience when they sleep too little?",
+options:[
+"Difficulty focusing",
+"Better memory",
+"More energy",
+"Better concentration"
+],
+answer:"A",
+explain:"文章明确指出睡眠不足可能使学生难以集中注意力。"
 },
 
 {
-title:"7. Managing a Student Budget",
-article:
-"Managing money is an important skill for university students. A limited budget does not necessarily mean that students cannot enjoy their university life. Instead, they can make better decisions by identifying essential expenses and reducing unnecessary purchases. Preparing meals, comparing prices and using student discounts are several practical strategies. Keeping a record of daily spending can also reveal patterns that students may not notice otherwise. The purpose of budgeting is not to stop spending completely. Rather, it is to make sure that available money is used according to priorities.",
-questions:[
-["What is the passage mainly about?",["Managing a student budget","Finding a university","Learning to cook professionally","Buying expensive products"],0,"文章重点讨论学生如何管理有限预算。"],
-["What can students do to save money?",["Compare prices","Ignore prices","Buy everything","Avoid all food"],0,"比较价格是文章提出的方法之一。"],
-["Why keep spending records?",["To identify spending patterns","To increase expenses","To avoid studying","To get automatic discounts"],0,"记录消费能够帮助发现平时可能注意不到的消费模式。"],
-["What is the purpose of budgeting?",["Using money according to priorities","Never spending","Borrowing more money","Buying more unnecessary items"],0,"预算管理的目的不是完全停止消费，而是合理安排钱。"],
-["'Priorities' means:",["things considered more important","things that are free","things that are difficult","things that are unnecessary"],0,"priority 指优先事项，即更重要的事情。"]
-]
+q:"Why can staying up late be misleading?",
+options:[
+"It may feel productive even though lost sleep reduces effectiveness.",
+"It always improves memory.",
+"It guarantees higher grades.",
+"It gives students more rest."
+],
+answer:"A",
+explain:"熬夜可能让人觉得完成了更多工作，但睡眠损失会降低学习效率。"
 },
 
 {
-title:"8. Volunteering",
-article:
-"Volunteering can provide students with experiences that are difficult to obtain in a classroom. Students may help organize community events, support younger learners or assist nonprofit organizations. Such activities can develop communication, leadership and organizational skills. More importantly, volunteering can expose students to people and situations that they may not normally encounter. This may help students understand social issues from different perspectives. Although volunteer work requires time and effort, many students find that the experience gives them a stronger connection to their communities.",
-questions:[
-["What can volunteering provide?",["Experiences outside the classroom","Guaranteed employment","Free university degrees","No responsibilities"],0,"文章强调志愿活动可以提供课堂之外的经验。"],
-["Which activity is mentioned?",["Supporting younger learners","Driving taxis","Selling houses","Repairing cars"],0,"support younger learners 在文章中被明确提到。"],
-["What skills can volunteering develop?",["Communication and leadership","Only mathematics","Only driving","None"],0,"文章提到 communication、leadership 和 organizational skills。"],
-["What may volunteering help students understand?",["Social issues from different perspectives","Only grammar","Traffic rules","Weather"],0,"文章指出志愿活动可以帮助学生从不同角度理解社会问题。"],
-["How do many students view the experience?",["It creates a stronger community connection.","It is completely useless.","It prevents all study.","It guarantees employment."],0,"文章最后指出许多学生因此与社区产生更强的联系。"]
-]
+q:"What does 'adequate' mean?",
+options:[
+"Enough",
+"Very expensive",
+"Unnecessary",
+"Temporary"
+],
+answer:"A",
+explain:"adequate 表示足够的、满足需要的。"
 },
 
 {
-title:"9. Exercise and University Life",
-article:
-"University students often spend long periods sitting in lectures, studying or using computers. Regular physical activity can provide an important break from this routine. Exercise does not necessarily require a gym membership. Walking, cycling and simple body-weight exercises can all contribute to physical health. Exercise may also benefit mental well-being by helping students manage stress. The most important factor is consistency. A short activity performed regularly is often more realistic and sustainable than an intense workout that happens only once in a while.",
-questions:[
-["Why is exercise useful for students?",["It provides a break from long periods of sitting.","It replaces studying.","It guarantees high grades.","It removes exams."],0,"文章指出运动可以让长时间坐着学习的学生得到休息。"],
-["Which activity is mentioned?",["Walking","Skiing","Golf only","Professional weightlifting"],0,"文章明确提到 walking。"],
-["What may exercise help manage?",["Stress","Tuition fees","Deadlines","Library books"],0,"文章提到运动有助于管理压力。"],
-["What is the most important factor?",["Consistency","Expensive equipment","Intensity","Competition"],0,"文章明确指出最重要的是 consistency。"],
-["Which exercise plan is more sustainable?",["Short regular activity","Rare intense exercise","No exercise","Only expensive gym training"],0,"规律的短时间运动更现实、更可持续。"]
-]
-},
+q:"What does the writer recommend?",
+options:[
+"A consistent sleep schedule",
+"Studying every night",
+"Avoiding sleep before exams",
+"Sleeping only on weekends"
+],
+answer:"A",
+explain:"文章最后建议保持规律的睡眠时间。"
+}
 
-{
-title:"10. Preparing for Examinations",
-article:
-"Effective examination preparation usually requires more than simply spending a large number of hours studying. Students need to decide what they need to learn, divide the material into manageable sections and review it over time. Practice questions can reveal weaknesses that may not be obvious when students only read their notes. It is also useful to review mistakes instead of simply checking the final score. Finally, adequate sleep before an examination is important because tired students may have difficulty concentrating. A balanced preparation strategy is therefore generally more effective than last-minute studying.",
-questions:[
-["What does effective preparation require?",["Planning and reviewing over time","Only studying all night","Ignoring mistakes","Reading without practice"],0,"文章强调规划、分块学习和持续复习。"],
-["Why are practice questions useful?",["They reveal weaknesses.","They remove the need to study.","They guarantee full marks.","They make exams shorter."],0,"练习题可以暴露学生的薄弱环节。"],
-["What should students do with mistakes?",["Review them","Ignore them","Delete them","Hide them"],0,"文章明确建议复习错误，而不是只看最终分数。"],
-["Why is sleep important?",["Tired students may have difficulty concentrating.","It guarantees full marks.","It replaces revision.","It removes anxiety completely."],0,"疲劳会影响注意力。"],
-["What is more effective than last-minute studying?",["A balanced preparation strategy","Studying only one hour","Avoiding practice","Ignoring weak areas"],0,"文章最后明确作出这个比较。"]
 ]
 }
 
 ];
 
 
-/* =========================================================
-   渲染语法
-========================================================= */
+/* =====================================================
+   语法页面
+===================================================== */
 
 function renderGrammar(){
 
-  const box=document.getElementById("grammarList");
+  const grid=document.getElementById("grammarGrid");
 
-  box.innerHTML="";
+  grid.innerHTML="";
 
-  grammarData.forEach(function(g,i){
+  grammarData.forEach(function(g,index){
 
-    const div=document.createElement("div");
+    const card=document.createElement("div");
 
-    div.className="card clickable";
+    card.className="card";
 
-    div.innerHTML=
-      '<span class="tag">高频语法</span>'+
-      '<h2>'+g.title+'</h2>'+
-      '<p>'+g.structure+'</p>'+
-      '<button class="action secondary">进入学习 →</button>';
+    card.innerHTML=`
+      <span class="tag">语法 ${index+1}</span>
+      <h3>${g.title}</h3>
+      <p>${g.structure}</p>
+      <button class="action secondary">进入学习 →</button>
+    `;
 
-    div.onclick=function(){
-      showGrammar(i);
+    card.onclick=function(){
+      showGrammar(index);
     };
 
-    box.appendChild(div);
+    grid.appendChild(card);
 
   });
+
 }
 
-function showGrammar(i){
 
-  const g=grammarData[i];
+function showGrammar(index){
 
-  const box=document.getElementById("grammarDetail");
+  const g=grammarData[index];
 
-  let html=
-    '<div class="detail">'+
-    '<button class="back" onclick="closeGrammar()">← 返回语法列表</button>'+
-    '<h1>'+g.title+'</h1>'+
-    '<div class="knowledge"><b>结构：</b><br>'+g.structure+'</div>'+
-    '<h3>🔑 常见标志词</h3>'+
-    '<p>'+g.words+'</p>'+
-    '<h3>📝 例句</h3>'+
-    '<div class="example">'+g.example+'</div>'+
-    '<h3>🧠 练习</h3>'+
-    '<div class="question">'+
-    '<div class="question-title">'+g.q+'</div>';
+  const detail=document.getElementById("grammarDetail");
 
-  g.options.forEach(function(o,n){
-    html+=
-      '<div class="option" id="gopt'+i+n+'">'+
-      String.fromCharCode(65+n)+'. '+o+
-      '</div>';
+  let options="";
+
+  g.options.forEach(function(option,i){
+
+    options+=`
+      <div class="choice">
+        ${String.fromCharCode(65+i)}. ${option}
+      </div>
+    `;
+
   });
 
-  html+=
-    '<button class="action" onclick="showGrammarAnswer('+i+')">查看答案与解析</button>'+
-    '<div id="ganswer'+i+'" class="answer-box hidden">'+
-    '<b>正确答案：'+String.fromCharCode(65+g.answer)+'</b><br>'+
-    g.explain+
-    '</div>'+
-    '</div>'+
-    '</div>';
+  detail.innerHTML=`
 
-  box.innerHTML=html;
+    <div class="hero">
 
-  box.scrollIntoView({behavior:"smooth"});
+      <span class="tag">语法知识点</span>
+
+      <h2>${g.title}</h2>
+
+      <div class="box">
+        <b>结构：</b><br>
+        ${g.structure}
+      </div>
+
+      <h3>🔑 常见标志词</h3>
+
+      <p>${g.words}</p>
+
+      <h3>📝 例句</h3>
+
+      <div class="example">
+        ${g.example}
+      </div>
+
+    </div>
+
+    <div class="question-box">
+
+      <div class="question-number">
+        小练习
+      </div>
+
+      <div class="question-text">
+        ${g.q}
+      </div>
+
+      ${options}
+
+      <button
+        class="action"
+        onclick="showGrammarAnswer(${index})">
+        查看答案与解析
+      </button>
+
+      <div
+        id="grammarAnswer"
+        class="feedback correct">
+
+        <b>答案：${g.answer}</b>
+
+        <div class="explain-question">
+          ${g.explain}
+        </div>
+
+      </div>
+
+    </div>
+
+    <br>
+
+    <button
+      class="action secondary"
+      onclick="closeGrammar()">
+      ← 返回语法列表
+    </button>
+  `;
+
+  detail.classList.add("show");
+
+  detail.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
 }
 
-function showGrammarAnswer(i){
 
-  const g=grammarData[i];
+function showGrammarAnswer(){
 
-  document.getElementById("ganswer"+i).classList.remove("hidden");
+  document
+    .getElementById("grammarAnswer")
+    .classList.add("show");
 
-  const opt=document.getElementById("gopt"+i+g.answer);
-
-  if(opt) opt.classList.add("correct");
 }
+
 
 function closeGrammar(){
-  document.getElementById("grammarDetail").innerHTML="";
-  document.getElementById("grammarList").scrollIntoView({behavior:"smooth"});
+
+  document
+    .getElementById("grammarDetail")
+    .classList.remove("show");
+
+  document
+    .getElementById("grammarGrid")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
 }
 
 
-/* =========================================================
-   阅读
-========================================================= */
+/* =====================================================
+   阅读页面
+===================================================== */
 
 function renderReading(){
 
-  const box=document.getElementById("readingList");
+  const grid=document.getElementById("readingGrid");
 
-  box.innerHTML="";
+  grid.innerHTML="";
 
-  readingData.forEach(function(r,i){
+  readingData.forEach(function(r,index){
 
-    const div=document.createElement("div");
+    const card=document.createElement("div");
 
-    div.className="card clickable";
+    card.className="card";
 
-    div.innerHTML=
-      '<span class="tag">完整文章 · 5题</span>'+
-      '<h2>'+r.title+'</h2>'+
-      '<p>'+r.article.substring(0,115)+'...</p>'+
-      '<button class="action secondary">开始阅读 →</button>';
+    card.innerHTML=`
+      <span class="tag">阅读 ${index+1} · 5题</span>
+      <h3>${r.title}</h3>
+      <p>${r.article.substring(0,100)}...</p>
+      <button class="action secondary">
+        阅读文章 →
+      </button>
+    `;
 
-    div.onclick=function(){
-      showReading(i);
+    card.onclick=function(){
+      showReading(index);
     };
 
-    box.appendChild(div);
+    grid.appendChild(card);
 
   });
+
 }
 
-function showReading(i){
 
-  const r=readingData[i];
+function showReading(index){
 
-  let html=
-    '<div class="detail">'+
-    '<button class="back" onclick="closeReading()">← 返回阅读列表</button>'+
-    '<h1>📖 '+r.title+'</h1>'+
-    '<div class="article">'+r.article+'</div>'+
-    '<h2>Questions</h2>';
+  const r=readingData[index];
 
-  r.questions.forEach(function(q,n){
+  const detail=document.getElementById("readingDetail");
 
-    html+=
-      '<div class="question">'+
-      '<div class="question-title">'+
-      (n+1)+'. '+q[0]+
-      '</div>';
+  let questions="";
 
-    q[1].forEach(function(o,k){
-      html+=
-        '<div class="option" id="ropt'+i+n+k+'">'+
-        String.fromCharCode(65+k)+'. '+o+
-        '</div>';
+  r.questions.forEach(function(q,i){
+
+    let options="";
+
+    q.options.forEach(function(option,j){
+
+      options+=`
+        <div class="choice">
+          ${String.fromCharCode(65+j)}. ${option}
+        </div>
+      `;
+
     });
 
-    html+=
-      '<button class="action secondary" onclick="readingAnswer('+i+','+n+')">查看答案与解析</button>'+
-      '<div id="ranswer'+i+n+'" class="answer-box hidden">'+
-      '<b>答案：'+String.fromCharCode(65+q[2])+'</b><br>'+
-      q[3]+
-      '</div>'+
-      '</div>';
+    questions+=`
+
+      <div class="question-box">
+
+        <div class="question-number">
+          Question ${i+1}
+        </div>
+
+        <div class="question-text">
+          ${q.q}
+        </div>
+
+        ${options}
+
+        <button
+          class="action"
+          onclick="toggleReadingAnswer(${index},${i})">
+          查看答案与解析
+        </button>
+
+        <div
+          id="readingAnswer${index}_${i}"
+          class="feedback correct">
+
+          <b>答案：${q.answer}</b>
+
+          <div class="explain-question">
+            ${q.explain}
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
 
   });
 
-  html+='</div>';
+  detail.innerHTML=`
 
-  document.getElementById("readingDetail").innerHTML=html;
+    <div class="article">
 
-  document.getElementById("readingDetail").scrollIntoView({behavior:"smooth"});
+      <div class="article-title">
+        ${r.title}
+      </div>
+
+      <p>${r.article}</p>
+
+    </div>
+
+    <br>
+
+    <h2>Questions</h2>
+
+    ${questions}
+
+    <br>
+
+    <button
+      class="action secondary"
+      onclick="closeReading()">
+      ← 返回阅读列表
+    </button>
+
+  `;
+
+  detail.classList.add("show");
+
+  detail.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
 }
 
-function readingAnswer(i,n){
 
-  const q=readingData[i].questions[n];
+function toggleReadingAnswer(index,qIndex){
 
-  document.getElementById("ranswer"+i+n).classList.remove("hidden");
+  document
+    .getElementById("readingAnswer"+index+"_"+qIndex)
+    .classList.toggle("show");
 
-  const opt=document.getElementById("ropt"+i+n+q[2]);
-
-  if(opt) opt.classList.add("correct");
 }
+
 
 function closeReading(){
-  document.getElementById("readingDetail").innerHTML="";
-  document.getElementById("readingList").scrollIntoView({behavior:"smooth"});
+
+  document
+    .getElementById("readingDetail")
+    .classList.remove("show");
+
+  document
+    .getElementById("readingGrid")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
 }
 
 
-/* =========================================================
-   写作
-========================================================= */
+/* =====================================================
+   口语
+===================================================== */
 
-function saveWriting(){
+function nextSpeaking(){
 
-  const text=document.getElementById("writingAnswer").value.trim();
+  document
+    .getElementById("speakingQuestion")
+    .style.display="block";
 
-  if(!text){
-    alert("请先写一点内容。");
-    return;
-  }
-
-  localStorage.setItem("simEPTWriting",text);
-
-  document.getElementById("writingSaved").classList.remove("hidden");
 }
 
 
-/* =========================================================
-   模拟考试题库
-========================================================= */
-
-const examSets=[
-
-{
-title:"模拟卷 1 · University Life",
-grammar:[
-["The university ___ several new courses next semester.",["offers","offered","is offering","has offered"],2,"next semester 表示已经安排的未来事项，此处使用现在进行时表示计划安排。"],
-["If students ___ their assignments early, they will have more time to revise.",["finish","will finish","finished","have finished"],0,"if 条件从句表示将来时通常使用一般现在时。"],
-["By the time the professor arrived, the students ___ the discussion.",["start","have started","had started","are starting"],2,"教授到达是过去时间点，讨论在此前已经开始，因此使用过去完成时。"],
-["The report ___ by the research team last week.",["completed","was completed","has completed","is completing"],1,"report 是动作承受者，并且 last week 指过去，因此使用一般过去时被动。"],
-["She suggested ___ the problem with the tutor.",["discuss","to discuss","discussing","discussed"],2,"suggest 后通常接动名词 doing。"],
-["Everyone in the class ___ expected to participate.",["are","were","is","have"],2,"everyone 语法上视为单数。"],
-["I have studied English ___ I entered university.",["for","since","during","from"],1,"since 后接过去时间点或事件。"],
-["The course was difficult. ___, I found it very useful.",["Because","Therefore","However","Unless"],2,"前后形成转折关系，因此使用 However。"],
-["If I ___ more time, I would join the club.",["have","had","will have","am having"],1,"would 表示与现在事实相反的假设，if 从句使用过去式。"],
-["Students should avoid ___ their assignments until the deadline.",["leave","to leave","leaving","left"],2,"avoid 后接 doing。"]
-],
-reading:readingData[0]
-},
-
-{
-title:"模拟卷 2 · Education",
-grammar:[
-["The lecturer ___ the students several useful examples yesterday.",["gives","gave","has given","giving"],1,"yesterday 明确表示过去。"],
-["When I arrived, the meeting ___.",["had already begun","has already begun","begins","will begin"],0,"会议开始发生在 arrived 之前，因此用过去完成时。"],
-["Students ___ submit the application before Friday.",["must","must to","are must","musts"],0,"must 后接动词原形。"],
-["The students who ___ regularly usually perform better.",["study","studies","studied","studying"],0,"students 是复数，关系从句谓语使用 study。"],
-["If the university ___ more scholarships, more students could apply.",["offers","offered","will offer","has offered"],1,"could apply 表示假设，if 从句使用过去式。"],
-["The new policy ___ next month.",["will introduce","will be introduced","introduces by","is introduce"],1,"policy 是被实施的对象，因此用被动语态。"],
-["She is interested in ___ more about academic writing.",["learn","to learn","learning","learned"],2,"be interested in 后的 in 是介词，后接 doing。"],
-["Neither of the answers ___ completely correct.",["are","were","is","have"],2,"neither 作主语时通常使用单数谓语。"],
-["The professor asked us ___ we understood the instructions.",["did","whether","were","do"],1,"宾语从句需要陈述语序，whether 表示是否。"],
-["This method is ___ than the previous one.",["effective","more effective","most effective","effectively"],1,"than 表示比较，effective 使用 more effective。"]
-],
-reading:readingData[1]
-},
-
-{
-title:"模拟卷 3 · Technology",
-grammar:[
-["Technology ___ rapidly over the past decade.",["developed","has developed","develops","is developing"],1,"over the past decade 与现在完成时常搭配。"],
-["The students ___ an online lecture when the connection failed.",["watch","were watching","have watched","watched"],1,"过去某一时刻正在发生的动作使用过去进行时。"],
-["By next year, the university ___ the new system.",["will introduce","introduced","will have introduced","has introduced"],2,"by next year 表示到未来某时已经完成，用将来完成时。"],
-["The information ___ on the university website.",["can find","can be found","can found","can finding"],1,"information 是被找到的对象，can 后使用 be found。"],
-["Many students prefer ___ digital materials.",["use","to using","using","used"],2,"prefer 在此处可以接 doing。"],
-["Although the system is expensive, it ___ save time.",["can","must to","is can","cans"],0,"can 后直接接动词原形。"],
-["If students ___ their passwords carefully, they can protect their accounts.",["manage","will manage","managed","have managed"],0,"if 条件句使用一般现在时。"],
-["The software, ___ was developed by students, is now widely used.",["who","which","where","what"],1,"software 是物，因此使用 which。"],
-["I don't know how long the process ___.",["takes","take","does take","taking"],0,"宾语从句使用陈述语序，process 是单数所以 takes。"],
-["The new system is much ___ than the old one.",["efficient","more efficient","most efficient","efficiently"],1,"much 修饰比较级，使用 more efficient。"]
-],
-reading:readingData[2]
-},
-
-{
-title:"模拟卷 4 · Environment & City",
-grammar:[
-["Many cities ___ public transport to reduce traffic.",["improve","improves","improved","improving"],0,"many cities 是复数，一般现在时使用 improve。"],
-["The road ___ when the accident happened.",["was repaired","was being repaired","has repaired","repairs"],1,"事故发生时道路正在被维修，用过去进行时被动。"],
-["If more people used buses, traffic ___ less serious.",["will be","would be","is","has been"],1,"与现在事实相反的假设使用 would。"],
-["The new station ___ by the end of next year.",["will complete","will be completed","completed","is completing"],1,"station 是被完成的对象，使用将来时被动。"],
-["People should avoid ___ unnecessary energy.",["waste","to waste","wasting","wasted"],2,"avoid 后接动名词。"],
-["Each city ___ different transportation problems.",["have","has","having","are"],1,"each 后谓语使用单数。"],
-["The number of cars ___ increased significantly.",["have","has","are","were"],1,"the number of + 复数名词，谓语用单数。"],
-["The city introduced a policy ___ encourages cycling.",["who","which","where","what"],1,"policy 是物，使用 which。"],
-["The weather was poor; ___, the event continued.",["because","however","therefore","unless"],1,"前后形成转折，因此使用 however。"],
-["Public transport is becoming ___ popular among young people.",["more","most","much","many"],0,"becoming more popular 是正确搭配。"]
-],
-reading:readingData[3]
-},
-
-{
-title:"模拟卷 5 · Comprehensive",
-grammar:[
-["The students ___ the report before the deadline yesterday.",["submit","submitted","have submitted","submitting"],1,"yesterday 是过去时间。"],
-["She ___ at the university for three years.",["studies","studied","has studied","is studying"],2,"for three years 表示持续到现在，使用现在完成时。"],
-["When the teacher entered, we ___.",["were discussing","discuss","have discussed","will discuss"],0,"老师进入时讨论正在进行，用过去进行时。"],
-["If I ___ you, I would check the answer again.",["am","were","was","have been"],1,"与现在事实相反的虚拟条件句，be 通常使用 were。"],
-["The assignment must ___ before 5 p.m.",["submit","be submitted","submitted","be submitting"],1,"assignment 是被提交的对象，must be submitted。"],
-["The student ___ won the competition received a scholarship.",["which","who","where","what"],1,"student 指人，使用 who。"],
-["He is considering ___ abroad next year.",["study","to study","studying","studied"],2,"consider 后接动名词。"],
-["The lecturer explained ___ the experiment had failed.",["why","did why","was why","why did"],0,"宾语从句使用陈述语序，why 后直接接主语。"],
-["This approach is ___ effective than the previous one.",["much","more","most","many"],1,"than 表示比较，使用 more effective。"],
-["The course was challenging. ___, it was extremely useful.",["Therefore","However","Because","Unless"],1,"challenging 与 useful 形成转折。"]
-],
-reading:readingData[4]
-}
-
-];
-
-
-/* =========================================================
-   模拟考试状态
-========================================================= */
-
-let currentExam=null;
-let currentQuestion=0;
-let examAnswers=[];
-let examTimer=null;
-let remainingSeconds=45*60;
-
+/* =====================================================
+   模拟考试数据
+===================================================== */
 
 /*
-  每套模拟：
-  10语法 + 5阅读 = 15客观题
-  另有口语 + 写作。
+  每一套模拟卷：
+
+  语法 5题
+  阅读 5题
+
+  实际运行时会从题库中选取不同题目。
 */
+
+let examQuestions=[];
+let examIndex=0;
+let examAnswers=[];
+let examSet=0;
+let randomMode=false;
+
+
+/* =====================================================
+   创建模拟题
+===================================================== */
+
+function buildExam(setIndex){
+
+  let grammarPool=[...grammarData];
+
+  let readingPool=[...readingData];
+
+  /*
+    每套固定卷改变题目顺序。
+  */
+
+  let grammar=[];
+
+  let reading=[];
+
+  for(let i=0;i<5;i++){
+
+    grammar.push(
+      grammarPool[(setIndex*3+i)%grammarPool.length]
+    );
+
+    reading.push(
+      readingPool[(setIndex+i)%readingPool.length]
+    );
+
+  }
+
+  let result=[];
+
+  grammar.forEach(function(g){
+
+    result.push({
+      type:"语法",
+      q:g.q,
+      options:g.options,
+      answer:g.answer,
+      explain:g.explain
+    });
+
+  });
+
+  reading.forEach(function(r){
+
+    /*
+      每篇阅读只抽一道题进入模拟。
+      同时保留文章。
+    */
+
+    const questionIndex=
+      setIndex % r.questions.length;
+
+    const q=r.questions[questionIndex];
+
+    result.push({
+      type:"阅读",
+      articleTitle:r.title,
+      article:r.article,
+      q:q.q,
+      options:q.options,
+      answer:q.answer,
+      explain:q.explain
+    });
+
+  });
+
+  return result;
+
+}
+
+
+/* =====================================================
+   随机模拟
+===================================================== */
+
+function shuffle(array){
+
+  const arr=[...array];
+
+  for(let i=arr.length-1;i>0;i--){
+
+    const j=Math.floor(Math.random()*(i+1));
+
+    [arr[i],arr[j]]=
+    [arr[j],arr[i]];
+
+  }
+
+  return arr;
+
+}
+
+
+function startRandomExam(){
+
+  randomMode=true;
+
+  let all=[];
+
+  /*
+    随机抽取语法
+  */
+
+  shuffle(grammarData)
+    .slice(0,5)
+    .forEach(function(g){
+
+      all.push({
+        type:"语法",
+        q:g.q,
+        options:g.options,
+        answer:g.answer,
+        explain:g.explain
+      });
+
+    });
+
+  /*
+    随机抽取阅读
+  */
+
+  shuffle(readingData)
+    .slice(0,5)
+    .forEach(function(r){
+
+      const q=
+        r.questions[
+          Math.floor(
+            Math.random()*r.questions.length
+          )
+        ];
+
+      all.push({
+        type:"阅读",
+        articleTitle:r.title,
+        article:r.article,
+        q:q.q,
+        options:q.options,
+        answer:q.answer,
+        explain:q.explain
+      });
+
+    });
+
+  examQuestions=shuffle(all);
+
+  examIndex=0;
+
+  examAnswers=[];
+
+  openPage("examDoingPage");
+
+  renderExamQuestion();
+
+}
+
+
+/* =====================================================
+   固定模拟卷
+===================================================== */
 
 function startExam(setIndex){
 
-  currentExam=examSets[setIndex];
+  randomMode=false;
 
-  currentQuestion=0;
+  examSet=setIndex;
 
-  examAnswers=new Array(
-    currentExam.grammar.length+
-    currentExam.reading.questions.length
-  ).fill(null);
+  examQuestions=buildExam(setIndex);
 
-  remainingSeconds=45*60;
+  examIndex=0;
 
-  document.getElementById("examStart").classList.add("hidden");
-  document.getElementById("examResult").classList.add("hidden");
-  document.getElementById("examArea").classList.remove("hidden");
+  examAnswers=[];
 
-  document.getElementById("examSetTitle").innerText=currentExam.title;
+  openPage("examDoingPage");
 
-  buildExamNav();
   renderExamQuestion();
-  startTimer();
 
-  window.scrollTo(0,0);
 }
 
 
-/* =========================================================
-   模拟考试导航
-========================================================= */
-
-function buildExamNav(){
-
-  const nav=document.getElementById("examNav");
-
-  nav.innerHTML="";
-
-  const total=examAnswers.length;
-
-  for(let i=0;i<total;i++){
-
-    const btn=document.createElement("button");
-
-    btn.className="exam-num";
-
-    btn.innerText=i+1;
-
-    btn.onclick=function(){
-      currentQuestion=i;
-      renderExamQuestion();
-    };
-
-    nav.appendChild(btn);
-  }
-
-  updateExamNav();
-}
-
-function updateExamNav(){
-
-  const buttons=document.querySelectorAll(".exam-num");
-
-  buttons.forEach(function(btn,i){
-
-    btn.classList.remove("done","current");
-
-    if(examAnswers[i]!==null){
-      btn.classList.add("done");
-    }
-
-    if(i===currentQuestion){
-      btn.classList.add("current");
-    }
-
-  });
-}
-
-
-/* =========================================================
-   渲染考试题
-========================================================= */
+/* =====================================================
+   显示当前题
+===================================================== */
 
 function renderExamQuestion(){
 
-  const total=examAnswers.length;
+  const area=
+    document.getElementById("examQuestionArea");
 
-  const box=document.getElementById("examQuestion");
+  const result=
+    document.getElementById("examResult");
 
-  const progress=(currentQuestion+1)/total*100;
+  result.classList.remove("show");
 
-  document.getElementById("progressBar").style.width=progress+"%";
+  if(examIndex>=examQuestions.length){
 
-  let html="";
+    showExamResult();
 
-  if(currentQuestion<currentExam.grammar.length){
-
-    const q=currentExam.grammar[currentQuestion];
-
-    document.getElementById("examPartName").innerText="A · Grammar";
-
-    html+=
-      '<div class="card">'+
-      '<span class="tag">Grammar</span>'+
-      '<h2>Question '+(currentQuestion+1)+'</h2>'+
-      '<div class="question-title">'+q[0]+'</div>';
-
-    q[1].forEach(function(o,i){
-
-      const selected=examAnswers[currentQuestion]===i
-        ?" selected":"";
-
-      html+=
-        '<button class="option'+selected+'" '+
-        'onclick="selectExamAnswer('+i+')">'+
-        String.fromCharCode(65+i)+'. '+o+
-        '</button>';
-
-    });
-
-    html+='</div>';
-
-  }else{
-
-    const readingIndex=currentQuestion-currentExam.grammar.length;
-
-    const q=currentExam.reading.questions[readingIndex];
-
-    document.getElementById("examPartName").innerText=
-      "B · Reading";
-
-    /*
-      阅读考试中完整文章始终显示。
-    */
-
-    html+=
-      '<div class="card">'+
-      '<span class="tag">Reading</span>'+
-      '<h2>'+currentExam.reading.title+'</h2>'+
-      '<div class="article">'+
-      currentExam.reading.article+
-      '</div>'+
-      '<div class="question">'+
-      '<div class="question-title">'+
-      'Question '+(readingIndex+1)+
-      '<br>'+q[0]+
-      '</div>';
-
-    q[1].forEach(function(o,i){
-
-      const selected=examAnswers[currentQuestion]===i
-        ?" selected":"";
-
-      html+=
-        '<button class="option'+selected+'" '+
-        'onclick="selectExamAnswer('+i+')">'+
-        String.fromCharCode(65+i)+'. '+o+
-        '</button>';
-
-    });
-
-    html+='</div></div>';
+    return;
 
   }
 
-  box.innerHTML=html;
+  const q=examQuestions[examIndex];
 
-  updateExamNav();
+  document.getElementById("examType").textContent=
+    q.type;
+
+  document.getElementById("examCurrent").textContent=
+    examIndex+1;
+
+  document.getElementById("examTotal").textContent=
+    examQuestions.length;
+
+  document.getElementById("examProgressBar").style.width=
+    ((examIndex)/examQuestions.length*100)+"%";
+
+
+  let article="";
+
+  if(q.type==="阅读"){
+
+    article=`
+
+      <div class="exam-article">
+
+        <strong>📖 阅读文章：${q.articleTitle}</strong>
+
+        ${q.article}
+
+      </div>
+
+    `;
+
+  }
+
+
+  let choices="";
+
+  q.options.forEach(function(option,i){
+
+    choices+=`
+
+      <button
+        class="choice"
+        onclick="selectExamAnswer(${i})">
+
+        ${String.fromCharCode(65+i)}.
+        ${option}
+
+      </button>
+
+    `;
+
+  });
+
+
+  area.innerHTML=`
+
+    <div class="question-box">
+
+      <div class="question-number">
+        ${q.type} · 第 ${examIndex+1} 题
+      </div>
+
+      ${article}
+
+      <div class="question-text">
+        ${q.q}
+      </div>
+
+      <div id="examChoices">
+        ${choices}
+      </div>
+
+      <div
+        id="examFeedback"
+        class="feedback">
+      </div>
+
+      <div class="exam-buttons">
+
+        <button
+          id="examNextButton"
+          class="action"
+          style="display:none"
+          onclick="nextExamQuestion()">
+          下一题 →
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
 }
 
 
-/* =========================================================
+/* =====================================================
    选择答案
-========================================================= */
+===================================================== */
 
 function selectExamAnswer(index){
 
-  examAnswers[currentQuestion]=index;
+  const q=examQuestions[examIndex];
 
-  renderExamQuestion();
-}
-
-
-/* =========================================================
-   上一题 / 下一题
-========================================================= */
-
-function prevExamQuestion(){
-
-  if(currentQuestion>0){
-
-    currentQuestion--;
-
-    renderExamQuestion();
-
-  }
-}
-
-function nextExamQuestion(){
-
-  if(currentQuestion<examAnswers.length-1){
-
-    currentQuestion++;
-
-    renderExamQuestion();
-
-  }
-}
-
-
-/* =========================================================
-   计时器
-========================================================= */
-
-function startTimer(){
-
-  clearInterval(examTimer);
-
-  updateTimer();
-
-  examTimer=setInterval(function(){
-
-    remainingSeconds--;
-
-    updateTimer();
-
-    if(remainingSeconds<=0){
-
-      clearInterval(examTimer);
-
-      alert("考试时间结束，系统自动交卷。");
-
-      submitExam();
-
-    }
-
-  },1000);
-}
-
-function updateTimer(){
-
-  const min=Math.floor(remainingSeconds/60);
-  const sec=remainingSeconds%60;
-
-  document.getElementById("timer").innerText=
-    String(min).padStart(2,"0")+":"+
-    String(sec).padStart(2,"0");
-}
-
-
-/* =========================================================
-   提交考试
-========================================================= */
-
-function submitExam(){
-
-  if(!currentExam) return;
-
-  const unanswered=examAnswers.filter(function(x){
-    return x===null;
-  }).length;
-
-  if(unanswered>0){
-
-    const ok=confirm(
-      "还有 "+unanswered+" 道题没有作答。\n确定现在交卷吗？"
-    );
-
-    if(!ok) return;
-  }
-
-  clearInterval(examTimer);
-
-  let grammarCorrect=0;
-  let readingCorrect=0;
-
-  const mistakes=[];
+  const buttons=
+    document.querySelectorAll("#examChoices .choice");
 
   /*
-    Grammar
+    防止重复选择
   */
 
-  currentExam.grammar.forEach(function(q,i){
-
-    const user=examAnswers[i];
-
-    if(user===q[1].indexOf(q[1][q[1].answer])){}
-
-    /*
-      q 数据格式没有单独 answer 字段。
-      正确答案由题库中的解析对象处理。
-    */
+  buttons.forEach(function(button){
+    button.disabled=true;
   });
 
-  /*
-    为兼容前面的数据格式，
-    根据题库中的正确答案映射重新计算。
-  */
+  buttons[index].classList.add("selected");
 
-  const correctGrammar=[
-    [2,0,2,1,2,2,1,2,2,2],
-    [1,0,0,1,1,2,2,2,1,1],
-    [1,1,2,1,2,0,1,1,0,1],
-    [0,1,1,1,2,1,1,1,1,0],
-    [1,2,0,1,1,1,2,0,1,1]
-  ];
+  const chosen=
+    String.fromCharCode(65+index);
 
-  /*
-    找到当前模拟卷编号。
-  */
+  const correct=
+    chosen===q.answer;
 
-  const setIndex=examSets.indexOf(currentExam);
+  if(correct){
 
-  currentExam.grammar.forEach(function(q,i){
-
-    const correct=correctGrammar[setIndex][i];
-
-    const user=examAnswers[i];
-
-    if(user===correct){
-      grammarCorrect++;
-    }else{
-      mistakes.push({
-        part:"语法",
-        number:i+1,
-        question:q[0],
-        options:q[1],
-        user:user,
-        correct:correct,
-        explain:q[3]
-      });
-    }
-
-  });
-
-  /*
-    阅读正确答案
-  */
-
-  const grammarCount=currentExam.grammar.length;
-
-  currentExam.reading.questions.forEach(function(q,i){
-
-    const position=grammarCount+i;
-
-    const correct=q[2];
-
-    const user=examAnswers[position];
-
-    if(user===correct){
-
-      readingCorrect++;
-
-    }else{
-
-      mistakes.push({
-        part:"阅读",
-        number:i+1,
-        question:q[0],
-        options:q[1],
-        user:user,
-        correct:correct,
-        explain:q[3],
-        article:currentExam.reading.article
-      });
-
-    }
-
-  });
-
-  const totalQuestions=grammarCount+
-    currentExam.reading.questions.length;
-
-  const objectiveCorrect=
-    grammarCorrect+readingCorrect;
-
-  const objectiveScore=
-    Math.round(objectiveCorrect/totalQuestions*100);
-
-  /*
-    口语和写作不做机器评分。
-    给出模拟题，用户自己完成。
-  */
-
-  showExamResult(
-    grammarCorrect,
-    readingCorrect,
-    totalQuestions,
-    objectiveScore,
-    mistakes
-  );
-}
-
-
-/* =========================================================
-   模拟结果
-========================================================= */
-
-function showExamResult(
-  grammarCorrect,
-  readingCorrect,
-  totalQuestions,
-  score,
-  mistakes
-){
-
-  document.getElementById("examArea").classList.add("hidden");
-
-  const result=document.getElementById("examResult");
-
-  let html=
-    '<div class="score">'+
-    '<h1>🎉 模拟考试完成</h1>'+
-    '<div class="score-number">'+score+'</div>'+
-    '<p>客观题模拟得分 / 100</p>'+
-    '</div>'+
-
-    '<div class="grid">'+
-
-    '<div class="card">'+
-    '<h2>Grammar</h2>'+
-    '<h3>'+grammarCorrect+' / '+currentExam.grammar.length+'</h3>'+
-    '</div>'+
-
-    '<div class="card">'+
-    '<h2>Reading</h2>'+
-    '<h3>'+readingCorrect+' / '+currentExam.reading.questions.length+'</h3>'+
-    '</div>'+
-
-    '</div>'+
-
-    '<div class="card">'+
-    '<h2>🗣️ Speaking</h2>'+
-    '<p><b>Question 1</b></p>'+
-    '<p>Describe a challenge you have experienced as a university student and explain how you dealt with it.</p>'+
-    '<p><b>Question 2</b></p>'+
-    '<p>Do you think university students should have part-time jobs? Give reasons and examples.</p>'+
-    '<div class="notice">按照考试要求，口语题需要你直接看到问题后进行回答。建议回答结构：观点 → 原因 → 例子 → 总结。</div>'+
-    '</div>'+
-
-    '<div class="card">'+
-    '<h2>✍️ Writing</h2>'+
-    '<p><b>Essay Question</b></p>'+
-    '<p>Some people believe that technology has made university education more effective, while others believe that it has created new problems. Discuss both views and give your own opinion.</p>'+
-    '<p><b>建议：</b>约250–300词。</p>'+
-    '<textarea id="examWriting" placeholder="在这里完成你的模拟作文……"></textarea>'+
-    '</div>';
-
-  if(mistakes.length===0){
-
-    html+=
-      '<div class="answer-box">'+
-      '<h2>🎉 全部正确！</h2>'+
-      '这套模拟题没有客观题错误。可以继续挑战下一套。'+
-      '</div>';
+    buttons[index].classList.add("correct");
 
   }else{
 
-    html+=
-      '<div class="card">'+
-      '<h2>❌ 错题解析</h2>'+
-      '<p>下面保留了<b>原题、你的答案、正确答案和解析</b>。</p>';
+    buttons[index].classList.add("wrong");
 
-    mistakes.forEach(function(m,i){
+    /*
+      找出正确答案并高亮
+    */
 
-      const userText=
-        m.user===null
-        ?"未作答"
-        :String.fromCharCode(65+m.user)+". "+m.options[m.user];
+    const correctIndex=
+      q.answer.charCodeAt(0)-65;
 
-      const correctText=
-        String.fromCharCode(65+m.correct)+
-        ". "+
-        m.options[m.correct];
+    if(buttons[correctIndex]){
+      buttons[correctIndex].classList.add("correct");
+    }
 
-      html+=
-        '<div class="review-card">'+
-        '<span class="tag">'+m.part+'</span>'+
-        '<h3>第 '+m.number+' 题</h3>'+
-        '<p><b>原题：</b><br>'+m.question+'</p>'+
-        '<p><b>你的答案：</b><br>'+
-        '<span style="color:#dc2626">'+
-        userText+
-        '</span></p>'+
-        '<p><b>正确答案：</b><br>'+
-        '<span style="color:#16a34a">'+
-        correctText+
-        '</span></p>'+
-        '<div class="wrong-box">'+
-        '<b>📖 解析：</b><br>'+
-        m.explain+
-        '</div>'+
-        '</div>';
+  }
+
+  examAnswers.push({
+    question:q,
+    chosen:chosen,
+    correct:correct
+  });
+
+
+  const feedback=
+    document.getElementById("examFeedback");
+
+  feedback.classList.add("show");
+
+  if(correct){
+
+    feedback.className=
+      "feedback correct show";
+
+    feedback.innerHTML=`
+      <b>✅ 回答正确</b>
+      <div class="explain-question">
+        ${q.explain}
+      </div>
+    `;
+
+  }else{
+
+    feedback.className=
+      "feedback wrong show";
+
+    feedback.innerHTML=`
+      <b>❌ 回答错误</b><br>
+      正确答案：${q.answer}
+
+      <div class="explain-question">
+        <b>题目解析：</b><br>
+        ${q.explain}
+      </div>
+    `;
+
+  }
+
+  const nextButton=
+    document.getElementById("examNextButton");
+
+  nextButton.style.display="inline-block";
+
+  /*
+    最后一题改变按钮文字
+  */
+
+  if(examIndex===examQuestions.length-1){
+
+    nextButton.textContent="查看成绩";
+
+  }
+
+}
+
+
+/* =====================================================
+   下一题
+===================================================== */
+
+function nextExamQuestion(){
+
+  examIndex++;
+
+  renderExamQuestion();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =====================================================
+   成绩
+===================================================== */
+
+function showExamResult(){
+
+  document.getElementById("examQuestionArea")
+    .innerHTML="";
+
+  const result=
+    document.getElementById("examResult");
+
+  const correctCount=
+    examAnswers.filter(function(item){
+      return item.correct;
+    }).length;
+
+  const total=
+    examQuestions.length;
+
+  const percent=
+    Math.round(correctCount/total*100);
+
+  let html=`
+
+    <h2>🎉 模拟考试完成</h2>
+
+    <div class="score">
+      ${percent}%
+    </div>
+
+    <p>
+      正确 ${correctCount} / ${total}
+    </p>
+
+  `;
+
+  if(percent>=80){
+
+    html+=`
+      <p>🔥 表现很好，可以继续挑战更高难度。</p>
+    `;
+
+  }else if(percent>=60){
+
+    html+=`
+      <p>👍 基础不错，继续针对错题训练。</p>
+    `;
+
+  }else{
+
+    html+=`
+      <p>💪 建议先回到语法和阅读专项复习，再重新模拟。</p>
+    `;
+
+  }
+
+
+  html+=`
+
+    <div class="result-detail">
+
+      <h3>错题解析</h3>
+
+  `;
+
+  const wrong=
+    examAnswers.filter(function(item){
+      return !item.correct;
+    });
+
+  if(wrong.length===0){
+
+    html+=`
+      <div class="result-item">
+        🎉 本套没有错题！
+      </div>
+    `;
+
+  }else{
+
+    wrong.forEach(function(item,i){
+
+      html+=`
+
+        <div class="result-item">
+
+          <b>
+            ${i+1}. ${item.question.q}
+          </b>
+
+          <br><br>
+
+          你的答案：
+          <b>${item.chosen}</b>
+
+          <br>
+
+          正确答案：
+          <b>${item.question.answer}</b>
+
+          <div class="explain-question">
+            <b>解析：</b><br>
+            ${item.question.explain}
+          </div>
+
+        </div>
+
+      `;
 
     });
 
-    html+='</div>';
-
   }
 
-  html+=
-    '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px">'+
-    '<button class="action" onclick="restartCurrentExam()">重新做这一套</button>'+
-    '<button class="action secondary" onclick="backToExamSelection()">选择其他模拟卷</button>'+
-    '</div>';
+
+  html+=`
+
+    </div>
+
+    <br>
+
+    <button
+      class="action"
+      onclick="restartCurrentExam()">
+      再做一次
+    </button>
+
+    <button
+      class="action secondary"
+      onclick="openPage('examPage')">
+      选择其他模拟卷
+    </button>
+
+    <button
+      class="action secondary"
+      onclick="openPage('homePage')">
+      返回首页
+    </button>
+
+  `;
 
   result.innerHTML=html;
 
-  result.classList.remove("hidden");
+  result.classList.add("show");
 
-  result.scrollIntoView({behavior:"smooth"});
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
 
 
-/* =========================================================
-   模拟考试重新开始
-========================================================= */
+/* =====================================================
+   重新开始
+===================================================== */
 
 function restartCurrentExam(){
 
-  const index=examSets.indexOf(currentExam);
+  if(randomMode){
 
-  startExam(index);
-}
+    startRandomExam();
 
-function backToExamSelection(){
+  }else{
 
-  clearInterval(examTimer);
-
-  document.getElementById("examArea").classList.add("hidden");
-  document.getElementById("examResult").classList.add("hidden");
-  document.getElementById("examStart").classList.remove("hidden");
-
-  window.scrollTo(0,0);
-}
-
-
-/* =========================================================
-   初始化
-========================================================= */
-
-document.addEventListener("DOMContentLoaded",function(){
-
-  renderGrammar();
-
-  renderReading();
-
-  /*
-    如果之前保存过作文，可以恢复。
-  */
-
-  const saved=localStorage.getItem("simEPTWriting");
-
-  if(saved){
-
-    document.getElementById("writingAnswer").value=saved;
+    startExam(examSet);
 
   }
 
-});
+}
+
+
+/* =====================================================
+   离开模拟考试
+===================================================== */
+
+function leaveExam(){
+
+  if(
+    confirm(
+      "确定退出当前模拟考试吗？当前进度不会保存。"
+    )
+  ){
+
+    openPage("examPage");
+
+  }
+
+}
+
+
+/* =====================================================
+   初始化
+===================================================== */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    renderGrammar();
+
+    renderReading();
+
+  }
+);
 
 </script>
 
